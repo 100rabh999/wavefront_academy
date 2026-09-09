@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans bg-warmwhite text-navy-800 antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-navy-900;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md border border-white/60 shadow-glass;
+  }
+  .bg-orb-1 {
+    background: radial-gradient(circle, rgba(14,165,233,0.15) 0%, rgba(255,255,255,0) 70%);
+  }
+  .bg-orb-2 {
+    background: radial-gradient(circle, rgba(99,102,241,0.1) 0%, rgba(255,255,255,0) 70%);
+  }
+}
