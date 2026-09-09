@@ -53,30 +53,50 @@
         }
     </script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
                     colors: {
                         peacock: {
-                            50: '#f0fdfa',
-                            100: '#ccfbf1',
-                            200: '#99f6e4',
-                            300: '#5eead4',
-                            400: '#2dd4bf',
-                            500: '#14b8a6',
-                            600: '#0d9488',
-                            700: '#0f766e',
-                            800: '#115e59',
-                            900: '#134e4a'
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#0f172a',
+                            900: '#020617'
                         }
+                    },
+                    boxShadow: {
+                        'premium': '0 10px 40px -10px rgba(0,0,0,0.08)',
                     }
                 }
             }
         }
     </script>
     <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
+        }
+
         .carousel-item {
             display: none;
         }
@@ -90,7 +110,7 @@
             position: absolute;
             inset: 0;
             opacity: 0;
-            transition: opacity 1s ease-in-out;
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         #heroCarousel .carousel-item.active {
@@ -104,8 +124,35 @@
             display: block;
         }
 
-        .fade-in {
-            animation: fadeIn 0.6s ease-in;
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .hover-lift {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.12);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal {
+            animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
         @keyframes fadeIn {
@@ -113,7 +160,6 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -121,7 +167,7 @@
         }
 
         .slide-in {
-            animation: slideIn 0.8s ease-out;
+            animation: slideIn 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
         @keyframes slideIn {
@@ -129,7 +175,6 @@
                 opacity: 0;
                 transform: translateX(-30px);
             }
-
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -137,23 +182,14 @@
         }
 
         .bounce-in {
-            animation: bounceIn 0.6s ease-out;
+            animation: bounceIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
 
         @keyframes bounceIn {
             0% {
-                transform: scale(0.3);
+                transform: scale(0.8);
                 opacity: 0;
             }
-
-            50% {
-                transform: scale(1.05);
-            }
-
-            70% {
-                transform: scale(0.9);
-            }
-
             100% {
                 transform: scale(1);
                 opacity: 1;
@@ -161,7 +197,7 @@
         }
 
         .modal {
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
         }
 
         .price-strike {
@@ -192,7 +228,7 @@
                 <p class="text-peacock-800 font-bold text-lg">Use Code: WAVE10</p>
             </div>
             <button onclick="closeModal()"
-                class="bg-peacock-600 hover:bg-peacock-700 text-white px-8 py-3 rounded-full font-semibold transition-colors">
+                class="bg-peacock-600 hover:bg-peacock-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg">
                 Claim Offer
             </button>
         </div>
@@ -259,7 +295,7 @@
                         <div class="absolute inset-0 bg-gradient-to-r from-peacock-600/80 to-peacock-800/80"></div>
                         <!-- <div class="relative text-center text-white p-8">
                             <h1 class="text-5xl md:text-7xl font-bold mb-4 slide-in">Excellence in Learning</h1>
-                            <p class="text-xl md:text-2xl mb-8 fade-in">Where dreams meet dedication</p>
+                            <p class="text-xl md:text-2xl mb-8 reveal">Where dreams meet dedication</p>
                         </div> -->
                     </div>
 
@@ -326,7 +362,7 @@
         <section class="py-20 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="fade-in">
+                    <div class="reveal">
                         <h2 class="text-4xl font-bold text-peacock-800 mb-6">About Wavefront Academy</h2>
                         <p class="text-lg text-gray-600 mb-6">
                             Wavefront Academy is recognized as the <strong>best classes in Virar for Science</strong>
@@ -373,7 +409,7 @@
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <!-- Pre-Primary -->
-                    <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow p-8 fade-in">
+                    <div class="glass-card rounded-2xl p-8 hover-lift reveal">
                         <div class="text-center mb-6">
                             <div class="text-6xl mb-4">🎨</div>
                             <h3 class="text-2xl font-bold text-peacock-800 mb-2">Pre-Primary</h3>
@@ -383,12 +419,12 @@
                             class="w-full mb-3 border border-peacock-600 text-peacock-600 py-2 rounded-full font-semibold hover:bg-peacock-50 transition-colors">See
                             Fee Structure</button>
                         <button
-                            class="w-full bg-peacock-600 hover:bg-peacock-700 text-white py-3 rounded-full font-semibold transition-colors">Enroll
+                            class="w-full bg-peacock-600 hover:bg-peacock-700 text-white py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg">Enroll
                             Now</button>
                     </div>
 
                     <!-- Primary -->
-                    <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow p-8 fade-in">
+                    <div class="glass-card rounded-2xl p-8 hover-lift reveal">
                         <div class="text-center mb-6">
                             <div class="text-6xl mb-4">📚</div>
                             <h3 class="text-2xl font-bold text-peacock-800 mb-2">Primary</h3>
@@ -398,12 +434,12 @@
                             class="w-full mb-3 border border-peacock-600 text-peacock-600 py-2 rounded-full font-semibold hover:bg-peacock-50 transition-colors">See
                             Fee Structure</button>
                         <button
-                            class="w-full bg-peacock-600 hover:bg-peacock-700 text-white py-3 rounded-full font-semibold transition-colors">Enroll
+                            class="w-full bg-peacock-600 hover:bg-peacock-700 text-white py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg">Enroll
                             Now</button>
                     </div>
 
                     <!-- Secondary -->
-                    <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow p-8 fade-in">
+                    <div class="glass-card rounded-2xl p-8 hover-lift reveal">
                         <div class="text-center mb-6">
                             <div class="text-6xl mb-4">📝</div>
                             <h3 class="text-2xl font-bold text-peacock-800 mb-2">Secondary</h3>
@@ -413,12 +449,12 @@
                             class="w-full mb-3 border border-peacock-600 text-peacock-600 py-2 rounded-full font-semibold hover:bg-peacock-50 transition-colors">See
                             Fee Structure</button>
                         <button
-                            class="w-full bg-peacock-600 hover:bg-peacock-700 text-white py-3 rounded-full font-semibold transition-colors">Enroll
+                            class="w-full bg-peacock-600 hover:bg-peacock-700 text-white py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg">Enroll
                             Now</button>
                     </div>
 
                     <!-- Higher Secondary -->
-                    <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow p-8 fade-in">
+                    <div class="glass-card rounded-2xl p-8 hover-lift reveal">
                         <div class="text-center mb-6">
                             <div class="text-6xl mb-4">🔬</div>
                             <h3 class="text-2xl font-bold text-peacock-800 mb-2">Higher Secondary</h3>
@@ -428,7 +464,7 @@
                             class="w-full mb-3 border border-peacock-600 text-peacock-600 py-2 rounded-full font-semibold hover:bg-peacock-50 transition-colors">See
                             Fee Structure</button>
                         <button
-                            class="w-full bg-peacock-600 hover:bg-peacock-700 text-white py-3 rounded-full font-semibold transition-colors">Enroll
+                            class="w-full bg-peacock-600 hover:bg-peacock-700 text-white py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg">Enroll
                             Now</button>
                     </div>
                 </div>
@@ -621,7 +657,7 @@
                         12th Science Results</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 text-left">
                         <!-- Chandan Chaubey -->
-                        <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
+                        <div class="glass-card rounded-2xl p-8 text-center hover-lift">
                             <img src="chandan.jpeg" alt="Chandan Chaubey"
                                 class="w-32 h-32 mx-auto rounded-full border-4 border-peacock-500 shadow-md mb-4 object-cover">
                             <h3 class="text-xl font-bold text-peacock-800">Chandan Chaubey</h3>
@@ -630,7 +666,7 @@
                         </div>
 
                         <!-- Harsha Jha -->
-                        <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
+                        <div class="glass-card rounded-2xl p-8 text-center hover-lift">
                             <img src="harsh.jpeg" alt="Harsha Jha"
                                 class="w-32 h-32 mx-auto rounded-full border-4 border-peacock-500 shadow-md mb-4 object-cover">
                             <h3 class="text-xl font-bold text-peacock-800">Harsha Jha</h3>
@@ -639,7 +675,7 @@
                         </div>
 
                         <!-- Tejraj Mehtre -->
-                        <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
+                        <div class="glass-card rounded-2xl p-8 text-center hover-lift">
                             <img src="tejraj.jpeg" alt="Tejraj Mehtre"
                                 class="w-32 h-32 mx-auto rounded-full border-4 border-peacock-500 shadow-md mb-4 object-cover">
                             <h3 class="text-xl font-bold text-peacock-800">Tejraj Mehtre</h3>
@@ -648,7 +684,7 @@
                         </div>
 
                         <!-- Akshay Karande -->
-                        <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
+                        <div class="glass-card rounded-2xl p-8 text-center hover-lift">
                             <img src="newstudent.png" alt="Akshay Karande"
                                 class="w-32 h-32 mx-auto rounded-full border-4 border-peacock-500 shadow-md mb-4 object-cover">
                             <h3 class="text-xl font-bold text-peacock-800">Akshay Karande</h3>
@@ -656,7 +692,7 @@
                         </div>
 
                         <!-- Pratiksha -->
-                        <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
+                        <div class="glass-card rounded-2xl p-8 text-center hover-lift">
                             <img src="pratiksha.png" alt="Pratiksha"
                                 class="w-32 h-32 mx-auto rounded-full border-4 border-peacock-500 shadow-md mb-4 object-cover">
                             <h3 class="text-xl font-bold text-peacock-800">Pratiksha</h3>
@@ -664,7 +700,7 @@
                         </div>
 
                         <!-- Jiya Jha -->
-                        <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
+                        <div class="glass-card rounded-2xl p-8 text-center hover-lift">
                             <img src="Jiya.png" alt="Jiya Jha"
                                 class="w-32 h-32 mx-auto rounded-full border-4 border-peacock-500 shadow-md mb-4 object-cover">
                             <h3 class="text-xl font-bold text-peacock-800">Jiya Jha</h3>
@@ -679,7 +715,7 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 text-left">
                             <!-- Aditya Jha -->
                             <div
-                                class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
+                                class="glass-card rounded-2xl p-8 text-center hover-lift">
                                 <img src="aditya.jpg" alt="Aditya Jha"
                                     class="w-32 h-32 mx-auto rounded-full border-4 border-peacock-500 shadow-md mb-4 object-cover">
                                 <h3 class="text-xl font-bold text-peacock-800">Aditya Jha</h3>
@@ -688,7 +724,7 @@
 
                             <!-- Om Jha -->
                             <div
-                                class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
+                                class="glass-card rounded-2xl p-8 text-center hover-lift">
                                 <img src="om.jpg" alt="Om Jha"
                                     class="w-32 h-32 mx-auto rounded-full border-4 border-peacock-500 shadow-md mb-4 object-cover">
                                 <h3 class="text-xl font-bold text-peacock-800">Om Jha</h3>
@@ -697,7 +733,7 @@
 
                             <!-- Krishna Gupta -->
                             <div
-                                class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
+                                class="glass-card rounded-2xl p-8 text-center hover-lift">
                                 <img src="krishna.jpg" alt="Krishna Gupta"
                                     class="w-32 h-32 mx-auto rounded-full border-4 border-peacock-500 shadow-md mb-4 object-cover">
                                 <h3 class="text-xl font-bold text-peacock-800">Krishna Gupta</h3>
@@ -751,7 +787,7 @@
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-peacock-500 focus:border-transparent"></textarea>
                             </div>
                             <button type="submit"
-                                class="w-full bg-peacock-600 hover:bg-peacock-700 text-white py-3 rounded-lg font-semibold transition-colors">
+                                class="w-full bg-peacock-600 hover:bg-peacock-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg">
                                 Send Message
                             </button>
                         </form>
@@ -959,7 +995,7 @@
 
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <!-- Pre-Primary -->
-                    <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow p-8 fade-in">
+                    <div class="glass-card rounded-2xl p-8 hover-lift reveal">
                         <div class="text-center mb-6">
                             <div class="text-6xl mb-4">🎨</div>
                             <h3 class="text-2xl font-bold text-peacock-800 mb-2">Pre-Primary</h3>
@@ -969,12 +1005,12 @@
                             class="w-full mb-3 border border-peacock-600 text-peacock-600 py-2 rounded-full font-semibold hover:bg-peacock-50 transition-colors">See
                             Fee Structure</button>
                         <button
-                            class="w-full bg-peacock-600 hover:bg-peacock-700 text-white py-3 rounded-full font-semibold transition-colors">Enroll
+                            class="w-full bg-peacock-600 hover:bg-peacock-700 text-white py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg">Enroll
                             Now</button>
                     </div>
 
                     <!-- Primary -->
-                    <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow p-8 fade-in">
+                    <div class="glass-card rounded-2xl p-8 hover-lift reveal">
                         <div class="text-center mb-6">
                             <div class="text-6xl mb-4">📚</div>
                             <h3 class="text-2xl font-bold text-peacock-800 mb-2">Primary</h3>
@@ -984,12 +1020,12 @@
                             class="w-full mb-3 border border-peacock-600 text-peacock-600 py-2 rounded-full font-semibold hover:bg-peacock-50 transition-colors">See
                             Fee Structure</button>
                         <button
-                            class="w-full bg-peacock-600 hover:bg-peacock-700 text-white py-3 rounded-full font-semibold transition-colors">Enroll
+                            class="w-full bg-peacock-600 hover:bg-peacock-700 text-white py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg">Enroll
                             Now</button>
                     </div>
 
                     <!-- Secondary -->
-                    <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow p-8 fade-in">
+                    <div class="glass-card rounded-2xl p-8 hover-lift reveal">
                         <div class="text-center mb-6">
                             <div class="text-6xl mb-4">📝</div>
                             <h3 class="text-2xl font-bold text-peacock-800 mb-2">Secondary</h3>
@@ -999,12 +1035,12 @@
                             class="w-full mb-3 border border-peacock-600 text-peacock-600 py-2 rounded-full font-semibold hover:bg-peacock-50 transition-colors">See
                             Fee Structure</button>
                         <button
-                            class="w-full bg-peacock-600 hover:bg-peacock-700 text-white py-3 rounded-full font-semibold transition-colors">Enroll
+                            class="w-full bg-peacock-600 hover:bg-peacock-700 text-white py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg">Enroll
                             Now</button>
                     </div>
 
                     <!-- Higher Secondary -->
-                    <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow p-8 fade-in">
+                    <div class="glass-card rounded-2xl p-8 hover-lift reveal">
                         <div class="text-center mb-6">
                             <div class="text-6xl mb-4">🔬</div>
                             <h3 class="text-2xl font-bold text-peacock-800 mb-2">Higher Secondary</h3>
@@ -1014,7 +1050,7 @@
                             class="w-full mb-3 border border-peacock-600 text-peacock-600 py-2 rounded-full font-semibold hover:bg-peacock-50 transition-colors">See
                             Fee Structure</button>
                         <button
-                            class="w-full bg-peacock-600 hover:bg-peacock-700 text-white py-3 rounded-full font-semibold transition-colors">Enroll
+                            class="w-full bg-peacock-600 hover:bg-peacock-700 text-white py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg">Enroll
                             Now</button>
                     </div>
                 </div>
@@ -1059,7 +1095,7 @@
                 <!-- Testimonials -->
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
                     <!-- Chandan -->
-                    <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
+                    <div class="glass-card rounded-2xl p-8 text-center hover-lift">
                         <img src="chandan.jpeg" alt="Chandan Chaubey"
                             class="w-28 h-28 mx-auto rounded-full border-4 border-peacock-500 shadow-md mb-4 object-cover">
                         <h3 class="text-xl font-bold text-peacock-800">Chandan Chaubey</h3>
@@ -1072,7 +1108,7 @@
                     </div>
 
                     <!-- Harsha -->
-                    <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
+                    <div class="glass-card rounded-2xl p-8 text-center hover-lift">
                         <img src="harsh.jpeg" alt="Harsha Jha"
                             class="w-28 h-28 mx-auto rounded-full border-4 border-peacock-500 shadow-md mb-4 object-cover">
                         <h3 class="text-xl font-bold text-peacock-800">Harsha Jha</h3>
@@ -1085,7 +1121,7 @@
                     </div>
 
                     <!-- Tejraj -->
-                    <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
+                    <div class="glass-card rounded-2xl p-8 text-center hover-lift">
                         <img src="tejraj.jpeg" alt="Tejraj Mehtre"
                             class="w-28 h-28 mx-auto rounded-full border-4 border-peacock-500 shadow-md mb-4 object-cover">
                         <h3 class="text-xl font-bold text-peacock-800">Tejraj Mehtre</h3>
@@ -1196,7 +1232,7 @@
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-peacock-500 focus:border-transparent"></textarea>
                             </div>
                             <button type="submit"
-                                class="w-full bg-peacock-600 hover:bg-peacock-700 text-white py-3 rounded-lg font-semibold transition-colors">
+                                class="w-full bg-peacock-600 hover:bg-peacock-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg">
                                 Send Message
                             </button>
                         </form>
@@ -1433,7 +1469,7 @@
                     <div class="text-6xl mb-4">✅</div>
                     <h2 class="text-2xl font-bold text-peacock-800 mb-4">Message Sent!</h2>
                     <p class="text-gray-600 mb-6">Thank you for your interest. We'll get back to you within 24 hours.</p>
-                    <button onclick="this.parentElement.parentElement.remove()" class="bg-peacock-600 hover:bg-peacock-700 text-white px-8 py-3 rounded-full font-semibold transition-colors">
+                    <button onclick="this.parentElement.parentElement.remove()" class="bg-peacock-600 hover:bg-peacock-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg">
                         Close
                     </button>
                 </div>
@@ -1452,7 +1488,7 @@
                     <div class="text-6xl mb-4">🎉</div>
                     <h2 class="text-2xl font-bold text-peacock-800 mb-4">Thank You!</h2>
                     <p class="text-gray-600 mb-6">Your message has been received. Our admissions team will contact you soon to discuss your enrollment.</p>
-                    <button onclick="this.parentElement.parentElement.remove()" class="bg-peacock-600 hover:bg-peacock-700 text-white px-8 py-3 rounded-full font-semibold transition-colors">
+                    <button onclick="this.parentElement.parentElement.remove()" class="bg-peacock-600 hover:bg-peacock-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg">
                         Close
                     </button>
                 </div>
@@ -1503,6 +1539,28 @@
     </script>
 
     <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'96e199ffb28c3f04',t:'MTc1NTAxODc4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach((element) => {
+                observer.observe(element);
+            });
+        });
+    </script>
 </body>
 
 </html>
