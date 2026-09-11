@@ -30,16 +30,16 @@ export const achievements = {
     },
     {
       id: 'pratiksha',
-      name: 'Pratiksha',
+      name: 'Pratiksha Bare',
       exam: 'MHT-CET',
-      score: '97.13%ile',
+      score: '96.398%ile',
       image: '/pratiksha.png'
     },
     {
       id: 'jiya',
       name: 'Jiya Jha',
       exam: 'MHT-CET',
-      score: '96.37%ile',
+      score: '94.328%ile',
       image: '/Jiya.png'
     }
   ],
