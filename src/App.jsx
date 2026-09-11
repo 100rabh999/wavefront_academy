@@ -10,6 +10,7 @@ import { ResultsPage } from './pages/ResultsPage'
 import { FeesPage } from './pages/FeesPage'
 import { AboutPage } from './pages/AboutPage'
 import { FAQPage } from './pages/FAQPage'
+import { JeePage } from './pages/programs/JeePage'
 import { ScrollToTop } from './components/layout/ScrollToTop'
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/programs" element={<ProgramsPage />} />
+            <Route path="/programs/jee" element={<JeePage />} />
             <Route path="/results" element={<ResultsPage />} />
             <Route path="/fees" element={<FeesPage />} />
             <Route path="/about" element={<AboutPage />} />

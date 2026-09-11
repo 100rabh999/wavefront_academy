@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { courses } from '../../data/courses';
 import { SectionHeading } from '../ui/SectionHeading';
 import { BookOpen, GraduationCap, Trophy } from 'lucide-react';
@@ -30,11 +31,21 @@ const ProgramCard = ({ course, index, highlight = false }) => (
       </ul>
     </div>
     
-    <a href="#contact" className="mt-auto">
-      <Button variant={highlight ? 'primary' : 'outline'} className="w-full text-base py-3.5">
-        Enquire Now
-      </Button>
-    </a>
+    <div className="mt-auto">
+      {course.id === 'jee' ? (
+        <Link to={`/programs/${course.id}`}>
+          <Button variant={highlight ? 'primary' : 'outline'} className="w-full text-base py-3.5">
+            View Program Details
+          </Button>
+        </Link>
+      ) : (
+        <a href="#contact">
+          <Button variant={highlight ? 'primary' : 'outline'} className="w-full text-base py-3.5">
+            Enquire Now
+          </Button>
+        </a>
+      )}
+    </div>
   </motion.div>
 );
 

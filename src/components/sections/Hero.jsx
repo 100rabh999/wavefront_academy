@@ -33,14 +33,14 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block py-1.5 px-4 rounded-full bg-navy-50 text-navy-800 font-semibold text-xs md:text-sm mb-6 border border-navy-100 tracking-wide uppercase">
-                Wavefront Academy
-              </span>
+              <h1 className="inline-block py-1.5 px-4 rounded-full bg-navy-50 text-navy-800 font-semibold text-xs md:text-sm mb-6 border border-navy-100 tracking-wide uppercase">
+                Wavefront Academy: Coaching Classes in Virar
+              </h1>
               {/* Refined typography sizing: mobile 40px, tablet 48px, desktop 56-64px */}
-              <h1 className="text-[40px] leading-[1.1] md:text-5xl lg:text-6xl font-display font-bold text-navy-950 mb-6">
+              <h2 className="text-[40px] leading-[1.1] md:text-5xl lg:text-6xl font-display font-bold text-navy-950 mb-6">
                 Build Strong Foundations.<br />
                 <span className="text-accent-600">Prepare for What’s Next.</span>
-              </h1>
+              </h2>
               <p className="text-base md:text-lg text-charcoal mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
                 Expert academic guidance and structured preparation for students pursuing school excellence, JEE, NEET, MHT-CET, and other competitive pathways.
               </p>
