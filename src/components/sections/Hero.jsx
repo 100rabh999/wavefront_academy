@@ -14,7 +14,7 @@ export function Hero() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % resultBanners.length);
-    }, 4000);
+    }, 2500);
     return () => clearInterval(timer);
   }, []);
 
@@ -56,7 +56,7 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Hero Visual - animated result banners */}
+          {/* Hero Visual - fast slide by slide */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -70,14 +70,12 @@ export function Hero() {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentIndex % resultBanners.length}
-                  initial={{ opacity: 0, y: 50, rotateX: -15, scale: 0.9 }}
-                  animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -50, rotateX: 15, scale: 0.9 }}
+                  initial={{ opacity: 0, scale: 0.98, filter: "blur(5px)" }}
+                  animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, scale: 0.98, filter: "blur(5px)" }}
                   transition={{
-                    duration: 0.6,
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 15
+                    duration: 0.3,
+                    ease: "easeInOut"
                   }}
                   className="w-full flex items-center justify-center"
                 >

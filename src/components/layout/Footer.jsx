@@ -1,5 +1,6 @@
 import React from 'react';
 import { Phone, Mail, MapPin, Globe, MessageCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function Footer() {
   return (
@@ -32,11 +33,17 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-6 tracking-wide text-sm text-navy-100 uppercase">Explore</h4>
             <ul className="space-y-4">
-              {['Home', 'Programs', 'Results', 'About', 'FAQ'].map((link) => (
-                <li key={link}>
-                  <a href={`#${link.toLowerCase().replace(' ', '-')}`} className="text-navy-300 hover:text-white transition-colors text-sm">
-                    {link}
-                  </a>
+              {[
+                { name: 'Home', path: '/' },
+                { name: 'Programs', path: '/programs' },
+                { name: 'Results', path: '/results' },
+                { name: 'About', path: '/about' },
+                { name: 'FAQ', path: '/faq' }
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link to={link.path} className="text-navy-300 hover:text-white transition-colors text-sm">
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>

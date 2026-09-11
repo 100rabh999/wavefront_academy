@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '../ui/Button';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,12 +17,12 @@ export function Navbar() {
   }, []);
 
   const links = [
-    { name: 'Home', href: '#home' },
-    { name: 'Programs', href: '#programs' },
-    { name: 'Results', href: '#results' },
-    { name: 'Why Wavefront', href: '#why-wavefront' },
-    { name: 'About', href: '#about' },
-    { name: 'FAQ', href: '#faq' }
+    { name: 'Home', href: '/' },
+    { name: 'Programs', href: '/programs' },
+    { name: 'Results', href: '/results' },
+    { name: 'Fees', href: '/fees' },
+    { name: 'About', href: '/about' },
+    { name: 'FAQ', href: '/faq' }
   ];
 
   return (
@@ -28,24 +30,24 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex-shrink-0 flex items-center">
-            <a href="#" className="flex items-center gap-3 group">
+            <Link to="/" className="flex items-center gap-3 group">
               <img src="/walogo.png" alt="Wavefront Academy Logo" className="h-10 w-10 md:h-12 md:w-12 rounded-full shadow-sm group-hover:scale-105 transition-transform" />
               <div>
                 <h1 className="text-xl md:text-2xl font-display font-bold text-navy-950 tracking-tight">Wavefront</h1>
                 <p className="text-[10px] md:text-xs font-semibold text-accent-600 tracking-widest uppercase">Academy</p>
               </div>
-            </a>
+            </Link>
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
             {links.map((link) => (
-              <a 
+              <Link 
                 key={link.name} 
-                href={link.href}
-                className="text-navy-800 hover:text-accent-600 font-medium text-base transition-colors"
+                to={link.href}
+                className={`font-medium text-base transition-colors ${location.pathname === link.href ? 'text-accent-600' : 'text-navy-800 hover:text-accent-600'}`}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
             <a href="#contact">
               <Button variant="primary" className="px-6 py-2.5 shadow-md hover:shadow-lg transition-shadow">
@@ -67,14 +69,14 @@ export function Navbar() {
         <div className="md:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-xl">
           <div className="px-4 pt-2 pb-6 space-y-2">
             {links.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
-                className="block px-3 py-3 text-base font-medium text-navy-900 hover:bg-warmwhite rounded-lg"
+                to={link.href}
+                className={`block px-3 py-3 text-base font-medium rounded-lg ${location.pathname === link.href ? 'bg-accent-50 text-accent-700' : 'text-navy-900 hover:bg-warmwhite'}`}
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
             <div className="pt-4 px-3">
               <a href="#contact" onClick={() => setIsOpen(false)}>
