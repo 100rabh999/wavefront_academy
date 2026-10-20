@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://wavefrontacademy.web.app/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://wavefrontacademy.web.app/classroom.jpg</image:loc>
+      <image:title>Wavefront Academy Classroom Virar East</image:title>
+      <image:caption>Classroom and learning environment at Wavefront Academy Virar East</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wavefrontacademy.web.app/walogo.png</image:loc>
+      <image:title>Wavefront Academy Official Logo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://wavefrontacademy.web.app/programs</loc>
@@ -13,12 +23,52 @@
   <url>
     <loc>https://wavefrontacademy.web.app/programs/jee</loc>
     <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://wavefrontacademy.web.app/4e5d5e82-b91d-48ff-89f7-a08127b84f87.png</image:loc>
+      <image:title>JEE Mains and Advanced Preparation at Wavefront Academy Virar</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://wavefrontacademy.web.app/programs/neet</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://wavefrontacademy.web.app/programs/mht-cet</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://wavefrontacademy.web.app/chandan.jpeg</image:loc>
+      <image:title>Chandan Chaubey - 99.308 Percentile MHT-CET Topper</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://wavefrontacademy.web.app/programs/science</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://wavefrontacademy.web.app/class.jpeg</image:loc>
+      <image:title>11th and 12th Science Coaching Wavefront Academy Virar</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://wavefrontacademy.web.app/programs/foundation</loc>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://wavefrontacademy.web.app/results</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wavefrontacademy.web.app/harsh.jpeg</image:loc>
+      <image:title>Harsha Jha - 98.56 Percentile MHT-CET</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://wavefrontacademy.web.app/newstudent.png</image:loc>
+      <image:title>Akshay Karande - 98.33 Percentile JEE Mains</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://wavefrontacademy.web.app/fees</loc>
@@ -29,10 +79,19 @@
     <loc>https://wavefrontacademy.web.app/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wavefrontacademy.web.app/image-1.png</image:loc>
+      <image:title>Wavefront Academy Campus and Classroom Virar</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://wavefrontacademy.web.app/faq</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://wavefrontacademy.web.app/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

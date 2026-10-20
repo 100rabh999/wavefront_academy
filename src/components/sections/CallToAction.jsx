@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '../ui/Button';
+import { businessInfo } from '../../data/businessInfo';
 
 export function CallToAction() {
   const [status, setStatus] = useState('idle');
@@ -33,7 +34,7 @@ export function CallToAction() {
             
             <div className="bg-white/5 p-8 rounded-3xl border border-white/10 backdrop-blur-sm">
               <h4 className="font-semibold text-white text-lg mb-2">Visit Our Center</h4>
-              <p className="text-navy-200 leading-relaxed">Shop No. 11, Maitry Pooja Bldg.1, Near Viva College, Virar West, Palghar 401303</p>
+              <p className="text-navy-200 leading-relaxed">{businessInfo.address.full}</p>
             </div>
           </div>
 

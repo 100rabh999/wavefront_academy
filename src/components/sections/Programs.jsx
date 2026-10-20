@@ -32,16 +32,45 @@ const ProgramCard = ({ course, index, highlight = false }) => (
     </div>
     
     <div className="mt-auto">
-      {course.id === 'jee' ? (
-        <Link to={`/programs/${course.id}`}>
+      {course.id === 'jee' && (
+        <Link to="/programs/jee">
           <Button variant={highlight ? 'primary' : 'outline'} className="w-full text-base py-3.5">
-            View Program Details
+            View JEE Program
           </Button>
         </Link>
-      ) : (
+      )}
+      {course.id === 'neet' && (
+        <Link to="/programs/neet">
+          <Button variant={highlight ? 'primary' : 'outline'} className="w-full text-base py-3.5">
+            View NEET Program
+          </Button>
+        </Link>
+      )}
+      {course.id === 'mht-cet' && (
+        <Link to="/programs/mht-cet">
+          <Button variant={highlight ? 'primary' : 'outline'} className="w-full text-base py-3.5">
+            View MHT-CET Program
+          </Button>
+        </Link>
+      )}
+      {course.id === '11-12-science' && (
+        <Link to="/programs/science">
+          <Button variant={highlight ? 'primary' : 'outline'} className="w-full text-base py-3.5">
+            View Science Program
+          </Button>
+        </Link>
+      )}
+      {course.id === '5-10' && (
+        <Link to="/programs/foundation">
+          <Button variant={highlight ? 'primary' : 'outline'} className="w-full text-base py-3.5">
+            View Foundation Program
+          </Button>
+        </Link>
+      )}
+      {course.id === 'nda' && (
         <a href="#contact">
           <Button variant={highlight ? 'primary' : 'outline'} className="w-full text-base py-3.5">
-            Enquire Now
+            Enquire for NDA / IMUCET
           </Button>
         </a>
       )}

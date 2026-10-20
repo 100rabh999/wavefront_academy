@@ -13,7 +13,10 @@ const AchievementCard = ({ student, index }) => (
   >
     <img 
       src={student.image} 
-      alt={student.name}
+      alt={`${student.name} - ${student.exam} (${student.score}) Topper at Wavefront Academy Virar`}
+      width="64"
+      height="64"
+      loading="lazy"
       className="w-16 h-16 mx-auto rounded-full border-4 border-navy-50 shadow-sm mb-4 object-cover"
     />
     <h3 className="text-sm font-bold text-navy-950">{student.name}</h3>

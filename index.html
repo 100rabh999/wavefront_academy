@@ -34,22 +34,40 @@
 
     <!-- Schema Markup for Local Business -->
     <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "@id": "https://wavefrontacademy.web.app/#organization",
+      "name": "Wavefront Academy",
+      "url": "https://wavefrontacademy.web.app",
+      "logo": "https://wavefrontacademy.web.app/walogo.png",
+      "image": "https://wavefrontacademy.web.app/classroom.jpg",
+      "description": "Premier coaching classes in Virar East for JEE, NEET, MHT-CET, 11th-12th Science, and Classes 5-10 (SSC/CBSE/ICSE).",
+      "telephone": "+917058107207",
+      "email": "wavefrontacademy07@gmail.com",
+      "hasMap": "https://maps.app.goo.gl/xqBZftfyT7MTyN5FA",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Shop No. 11, Maitry Pooja Apartment, Near Manvelpada Talav",
+        "addressLocality": "Virar East",
+        "addressRegion": "Maharashtra",
+        "postalCode": "401303",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 19.4425421,
+        "longitude": 72.8200961
+      },
+      "openingHoursSpecification": [
         {
-        "@context": "https://schema.org",
-        "@type": "EducationalOrganization",
-        "name": "Wavefront Academy",
-        "url": "https://wavefrontacademy.web.app",
-        "description": "Best coaching classes in Virar & Nallasopara for JEE, NEET, CET, 11th-12th Science, SSC, CBSE & ICSE.",
-        "telephone": "+917058107207",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Shop No. 11, Maitry Pooja Bldg.1, Manvelpada Rd.",
-            "addressLocality": "Virar",
-            "addressRegion": "Maharashtra",
-            "postalCode": "401303",
-            "addressCountry": "IN"
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "08:00",
+          "closes": "21:00"
         }
-        }
+      ]
+    }
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">

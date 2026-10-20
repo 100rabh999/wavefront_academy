@@ -4,15 +4,29 @@ import { SectionHeading } from '../../components/ui/SectionHeading';
 import { Button } from '../../components/ui/Button';
 import { CallToAction } from '../../components/sections/CallToAction';
 import { Link } from 'react-router-dom';
-import { CheckCircle2, ChevronRight, Calculator, FileText, HelpCircle, Activity } from 'lucide-react';
+import { CheckCircle2, ChevronRight, Calculator, FileText, HelpCircle } from 'lucide-react';
+import { businessInfo } from '../../data/businessInfo';
 
 export function JeePage() {
+  const courseSchema = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "JEE Mains & Advanced Coaching",
+    "description": "Rigorous JEE Mains and Advanced preparation with advanced numerical problem solving, test series, and doubt solving in Virar East.",
+    "provider": {
+      "@type": "EducationalOrganization",
+      "name": businessInfo.name,
+      "sameAs": businessInfo.website
+    }
+  };
+
   return (
     <div className="pt-24 md:pt-28 bg-warmwhite">
       <PageSEO 
-        title="JEE Coaching Classes in Virar | Mains & Advanced Prep"
-        description="Rigorous JEE Mains and Advanced training at Wavefront Academy in Virar. We focus on advanced problem solving, mock tests, and doubt clearing for engineering aspirants."
+        title="JEE Coaching Classes in Virar East | Mains & Advanced Prep"
+        description="Rigorous JEE Mains and Advanced training at Wavefront Academy in Virar East. Advanced problem solving, NTA mock tests, and personalized mentoring."
         canonicalPath="/programs/jee"
+        schema={courseSchema}
       />
 
       {/* Breadcrumb & Hero */}

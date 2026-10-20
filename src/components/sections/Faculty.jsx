@@ -57,8 +57,11 @@ export function Faculty() {
                {/* Note: Insert real faculty/classroom photo here */}
                <div className="absolute inset-0 bg-gradient-to-tr from-navy-900/40 to-transparent mix-blend-multiply" />
                <img 
-                 src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                 alt="Wavefront Classroom" 
+                 src="/classroom.jpg" 
+                 alt="Wavefront Academy classroom learning environment in Virar East" 
+                 loading="lazy"
+                 width="800"
+                 height="1000"
                  className="w-full h-full object-cover"
                />
             </div>

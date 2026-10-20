@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     question: "Where is the academy located?",
-    answer: "We are located at Shop No. 11, Maitry Pooja Bldg.1, Near Viva College, Virar West, Palghar 401303."
+    answer: "We are located at Shop No. 11, Maitry Pooja Apartment, Near Manvelpada Talav, Virar East, Maharashtra 401303."
   },
   {
     question: "How can I enquire or enroll?",

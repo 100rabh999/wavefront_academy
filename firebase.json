@@ -2,6 +2,38 @@
   "hosting": {
     "public": "dist",
     "cleanUrls": true,
+    "redirects": [
+      {
+        "source": "/courses",
+        "destination": "/programs",
+        "type": 301
+      },
+      {
+        "source": "/courses/jee-coaching-virar",
+        "destination": "/programs/jee",
+        "type": 301
+      },
+      {
+        "source": "/courses/neet-coaching-virar",
+        "destination": "/programs/neet",
+        "type": 301
+      },
+      {
+        "source": "/courses/mht-cet-coaching-virar",
+        "destination": "/programs/mht-cet",
+        "type": 301
+      },
+      {
+        "source": "/courses/11th-science",
+        "destination": "/programs/science",
+        "type": 301
+      },
+      {
+        "source": "/courses/12th-science",
+        "destination": "/programs/science",
+        "type": 301
+      }
+    ],
     "rewrites": [
       {
         "source": "**",

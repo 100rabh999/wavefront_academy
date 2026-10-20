@@ -1,6 +1,6 @@
-import React from 'react';
 import { Phone, Mail, MapPin, Globe, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { businessInfo } from '../../data/businessInfo';
 
 export function Footer() {
   return (
@@ -52,11 +52,17 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-6 tracking-wide text-sm text-navy-100 uppercase">Programs</h4>
             <ul className="space-y-4">
-              {['JEE Main & Advanced', 'NEET', 'MHT-CET', 'NDA', 'School Academics'].map((program) => (
-                <li key={program}>
-                  <a href="#programs" className="text-navy-300 hover:text-white transition-colors text-sm">
-                    {program}
-                  </a>
+              {[
+                { name: 'JEE Main & Advanced', path: '/programs/jee' },
+                { name: 'NEET Medical', path: '/programs/neet' },
+                { name: 'MHT-CET', path: '/programs/mht-cet' },
+                { name: '11th & 12th Science', path: '/programs/science' },
+                { name: 'School Foundation (8-10)', path: '/programs/foundation' }
+              ].map((program) => (
+                <li key={program.name}>
+                  <Link to={program.path} className="text-navy-300 hover:text-white transition-colors text-sm">
+                    {program.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -67,16 +73,20 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <Phone className="w-5 h-5 mr-3 text-accent-500 flex-shrink-0 mt-0.5" />
-                <span className="text-navy-300 text-sm">+91 7058107207</span>
+                <a href={`tel:${businessInfo.phoneRaw}`} className="text-navy-300 hover:text-white transition-colors text-sm font-medium">
+                  {businessInfo.phone}
+                </a>
               </li>
               <li className="flex items-start">
                 <Mail className="w-5 h-5 mr-3 text-accent-500 flex-shrink-0 mt-0.5" />
-                <span className="text-navy-300 text-sm">wavefrontacademy@gmail.com</span>
+                <a href={`mailto:${businessInfo.email}`} className="text-navy-300 hover:text-white transition-colors text-sm">
+                  {businessInfo.email}
+                </a>
               </li>
               <li className="flex items-start">
                 <MapPin className="w-5 h-5 mr-3 text-accent-500 flex-shrink-0 mt-0.5" />
                 <span className="text-navy-300 text-sm leading-relaxed">
-                  Shop No. 11, Maitry Pooja Bldg.1, Near Viva College, Virar West, Palghar 401303
+                  {businessInfo.address.full}
                 </span>
               </li>
             </ul>
