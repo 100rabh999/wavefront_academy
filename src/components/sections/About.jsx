@@ -26,9 +26,12 @@ export function About() {
             <div className="absolute inset-0 bg-accent-50 rounded-[2rem] transform translate-x-4 translate-y-4 -z-10"></div>
             <img 
               src="/image-1.png" 
-              alt="Students in classroom"
-              className="rounded-[2rem] shadow-premium object-cover w-full"
-              style={{ aspectRatio: '4/3' }}
+              alt="Students learning in classroom at Wavefront Academy Virar"
+              width="800"
+              height="600"
+              loading="lazy"
+              decoding="async"
+              className="rounded-[2rem] shadow-premium object-cover w-full aspect-[4/3]"
             />
           </motion.div>
 

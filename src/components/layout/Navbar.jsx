@@ -34,7 +34,7 @@ export function Navbar() {
             <Link to="/" className="flex items-center gap-3 group">
               <img src="/walogo.png" alt="Wavefront Academy Logo" className="h-10 w-10 md:h-12 md:w-12 rounded-full shadow-sm group-hover:scale-105 transition-transform" />
               <div>
-                <h1 className="text-xl md:text-2xl font-display font-bold text-navy-950 tracking-tight">Wavefront</h1>
+                <span className="block text-xl md:text-2xl font-display font-bold text-navy-950 tracking-tight">Wavefront</span>
                 <p className="text-[10px] md:text-xs font-semibold text-accent-600 tracking-widest uppercase">Academy</p>
               </div>
             </Link>
@@ -58,8 +58,13 @@ export function Navbar() {
           </div>
 
           <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-navy-950 p-2">
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-navy-950 p-2"
+              aria-label={isOpen ? "Close main navigation menu" : "Open main navigation menu"}
+              aria-expanded={isOpen}
+            >
+              {isOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
             </button>
           </div>
         </div>

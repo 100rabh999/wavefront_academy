@@ -15,8 +15,9 @@ export function MhtCetPage() {
     "description": "Maharashtra State Board aligned MHT-CET coaching for Engineering and Pharmacy entrance examinations. Home to 99.308 percentile state toppers in Virar East.",
     "provider": {
       "@type": "EducationalOrganization",
+      "@id": `${businessInfo.website}/#organization`,
       "name": businessInfo.name,
-      "sameAs": businessInfo.website
+      "url": businessInfo.website
     }
   };
 

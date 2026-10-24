@@ -59,6 +59,17 @@ export function FAQPage() {
         canonicalPath="/faq"
         schema={faqSchema}
       />
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4 text-center">
+        <span className="inline-block py-1.5 px-4 rounded-full bg-accent-50 text-accent-700 font-bold text-xs md:text-sm mb-4 tracking-wide uppercase">
+          Parent & Student Support
+        </span>
+        <h1 className="text-4xl md:text-5xl font-display font-bold text-navy-950 mb-4">
+          Frequently Asked Questions
+        </h1>
+        <p className="text-base md:text-lg text-charcoal max-w-2xl mx-auto leading-relaxed">
+          Clear answers regarding admissions, batch structures, curriculum pathways, and our center location near Manvelpada Talav in Virar East.
+        </p>
+      </div>
       <FAQ />
       <CallToAction />
     </div>

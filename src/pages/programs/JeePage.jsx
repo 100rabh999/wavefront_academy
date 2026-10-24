@@ -15,8 +15,9 @@ export function JeePage() {
     "description": "Rigorous JEE Mains and Advanced preparation with advanced numerical problem solving, test series, and doubt solving in Virar East.",
     "provider": {
       "@type": "EducationalOrganization",
+      "@id": `${businessInfo.website}/#organization`,
       "name": businessInfo.name,
-      "sameAs": businessInfo.website
+      "url": businessInfo.website
     }
   };
 
@@ -46,7 +47,7 @@ export function JeePage() {
               Engineering Entrance
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-navy-950 mb-6 leading-tight">
-              JEE Mains & Advanced <span className="text-accent-600">Coaching in Virar</span>
+              JEE Mains & Advanced <span className="text-accent-600">Coaching in Virar East</span>
             </h1>
             <p className="text-lg md:text-xl text-charcoal leading-relaxed mb-8">
               Rigorous, structured training designed to build strong fundamentals and advanced problem-solving skills for India's most competitive engineering entrance examinations.
@@ -128,12 +129,18 @@ export function JeePage() {
             </div>
             <div className="relative">
               <div className="absolute inset-0 bg-accent-50 rounded-[2rem] transform translate-x-4 translate-y-4 -z-10"></div>
-              {/* Note: Using existing asset from results */}
-              <img 
-                src="/4e5d5e82-b91d-48ff-89f7-a08127b84f87.png" 
-                alt="JEE Advanced Preparation at Wavefront Academy"
-                className="rounded-[2rem] shadow-premium object-cover w-full"
-              />
+              <picture>
+                <source srcSet="/hero-banner-3.avif" type="image/avif" />
+                <img
+                  src="/hero-banner-3.jpg"
+                  alt="JEE Advanced Preparation at Wavefront Academy Virar East"
+                  width="1040"
+                  height="780"
+                  loading="lazy"
+                  decoding="async"
+                  className="rounded-[2rem] shadow-premium object-cover w-full aspect-[4/3]"
+                />
+              </picture>
             </div>
           </div>
         </div>

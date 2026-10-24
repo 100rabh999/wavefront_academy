@@ -28,7 +28,7 @@ export function trackEvent(eventName, params = {}) {
 }
 
 export function trackPhoneClick(locationLabel = 'unknown') {
-  trackEvent('contact_phone_click', {
+  trackEvent('phone_click', {
     event_category: 'engagement',
     event_label: locationLabel,
     contact_method: 'phone'
@@ -44,7 +44,15 @@ export function trackWhatsAppClick(programName = 'general', locationLabel = 'unk
   });
 }
 
+export function trackFormStart(formName = 'admission_enquiry') {
+  trackEvent('contact_form_start', {
+    event_category: 'engagement',
+    form_name: formName
+  });
+}
+
 export function trackEnquirySubmit(programName = 'general', studentClass = 'unknown') {
+  // CRITICAL PRIVACY: Never pass name, phone, email, or free-text to analytics
   trackEvent('generate_lead', {
     event_category: 'conversion',
     program: programName,

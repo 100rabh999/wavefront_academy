@@ -31,5 +31,8 @@ export const businessInfo = {
     }
     return `${base}?text=${encodeURIComponent(`Hello Wavefront Academy, I would like to enquire about ${courseTitle} coaching at your Virar East center.`)}`;
   },
+  // Google Apps Script Web App URL for free email delivery to wavefrontacademy07@gmail.com
+  // Set to '' until the Apps Script Web App is deployed.
+  emailEndpoint: import.meta.env?.VITE_LEAD_EMAIL_ENDPOINT || 'https://script.google.com/macros/s/AKfycbws-DD7Xfww1YsYr-x9BtzdZP5lL9zpOzNk2aoKCI9G66x4Gan_0ZyzNjZZPjtSYvsT3A/exec',
   openingHours: 'Mon-Sun: 08:00 - 21:00'
 };

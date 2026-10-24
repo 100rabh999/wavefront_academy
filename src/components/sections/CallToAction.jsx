@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '../ui/Button';
 import { businessInfo } from '../../data/businessInfo';
-import { trackEnquirySubmit, trackWhatsAppClick } from '../../utils/analytics';
-import { ShieldCheck, MessageSquare, PhoneCall, CheckCircle } from 'lucide-react';
+import { trackEnquirySubmit, trackWhatsAppClick, trackFormStart, trackPhoneClick } from '../../utils/analytics';
+import { ShieldCheck, MessageSquare, PhoneCall, CheckCircle, AlertCircle, Clock } from 'lucide-react';
 
 export function CallToAction({ defaultProgram = 'JEE' }) {
   const [formData, setFormData] = useState({
@@ -15,10 +15,17 @@ export function CallToAction({ defaultProgram = 'JEE' }) {
     parentConsent: true,
     website_hp: '' // Honeypot field for spam prevention
   });
-  const [status, setStatus] = useState('idle'); // idle | submitting | success | error
+  // idle | submitting | success | error | whatsapp_ready
+  const [status, setStatus] = useState('idle');
   const [submittedData, setSubmittedData] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
+  const formStartedRef = useRef(false);
 
   const handleChange = (e) => {
+    if (!formStartedRef.current) {
+      formStartedRef.current = true;
+      trackFormStart('admission_enquiry');
+    }
     const { name, value, type, checked } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -26,37 +33,83 @@ export function CallToAction({ defaultProgram = 'JEE' }) {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const getEncodedWhatsAppUrl = (data) => {
+    const student = data.name ? data.name.trim() : 'a student';
+    const locText = data.locality ? ` (Area: ${data.locality.trim()})` : '';
+    const message = `Hello Wavefront Academy, my name is ${student}${locText}. I am enquiring about ${data.program} coaching for Class ${data.studentClass}. Please share batch timings, syllabus plan, and admission details.`;
+    return `https://wa.me/917058107207?text=${encodeURIComponent(message)}`;
+  };
+
+  const handleInstantWhatsAppChat = () => {
+    const waUrl = getEncodedWhatsAppUrl(formData);
+    trackWhatsAppClick(formData.program, 'direct_cta_button');
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Spam honeypot detection
+    // 1. Spam honeypot detection
     if (formData.website_hp) {
-      console.warn('Bot detected via honeypot.');
+      console.warn('Submission dropped via honeypot.');
       setStatus('success');
+      setSubmittedData({ ...formData });
       return;
     }
 
-    // Phone validation (Indian 10-digit mobile number)
+    // 2. Client-side phone validation (Indian 10-digit mobile number)
     const phoneDigits = formData.phone.replace(/\D/g, '');
     if (phoneDigits.length < 10) {
       alert('Please enter a valid 10-digit mobile number.');
       return;
     }
 
+    // Capture submission snapshot
+    const submissionSnapshot = { ...formData };
+    setSubmittedData(submissionSnapshot);
+
+    const endpoint = (businessInfo.emailEndpoint || '').trim();
+
+    // 3. Case A: If no backend endpoint is configured yet, initiate WhatsApp flow directly
+    if (!endpoint) {
+      setStatus('whatsapp_ready');
+      const waUrl = getEncodedWhatsAppUrl(submissionSnapshot);
+      trackWhatsAppClick(submissionSnapshot.program, 'lead_form_whatsapp_flow');
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+      return;
+    }
+
+    // 4. Case B: Endpoint is configured. Post payload to Google Apps Script / email backend
     setStatus('submitting');
-    trackEnquirySubmit(formData.program, formData.studentClass);
+    setErrorMessage('');
 
-    setTimeout(() => {
-      setSubmittedData({ ...formData });
-      setStatus('success');
-    }, 600);
-  };
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8' // Text plain prevents CORS preflight in Apps Script
+        },
+        body: JSON.stringify(submissionSnapshot)
+      });
 
-  const handleInstantWhatsAppChat = () => {
-    const msg = `Hello Wavefront Academy, my name is ${formData.name || 'a student/parent'}. I am enquiring about ${formData.program} for Class ${formData.studentClass}. Please share batch timings and admission details.`;
-    const waUrl = `https://wa.me/917058107207?text=${encodeURIComponent(msg)}`;
-    trackWhatsAppClick(formData.program, 'lead_form_instant');
-    window.open(waUrl, '_blank', 'noopener,noreferrer');
+      if (!response.ok) {
+        throw new Error(`Server returned HTTP ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      if (result && result.status === 'success') {
+        setStatus('success');
+        // Only fire generate_lead when the backend confirms successful receipt
+        trackEnquirySubmit(submissionSnapshot.program, submissionSnapshot.studentClass);
+      } else {
+        throw new Error(result?.message || 'Server indicated an error processing enquiry.');
+      }
+    } catch (err) {
+      console.error('Enquiry dispatch error:', err);
+      setStatus('error');
+      setErrorMessage(err.message || 'Network error while delivering enquiry.');
+    }
   };
 
   return (
@@ -100,6 +153,7 @@ export function CallToAction({ defaultProgram = 'JEE' }) {
             <div className="flex items-center gap-4">
               <a 
                 href={`tel:${businessInfo.phoneRaw}`}
+                onClick={() => trackPhoneClick('cta_section')}
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-medium text-sm transition-colors"
               >
                 <PhoneCall className="w-4 h-4 text-accent-400" />
@@ -126,22 +180,27 @@ export function CallToAction({ defaultProgram = 'JEE' }) {
                 <div className="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-5">
                   <CheckCircle className="w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-bold text-navy-950 mb-2">Enquiry Received!</h3>
+                <h3 className="text-2xl font-bold text-navy-950 mb-2">Enquiry Sent to Mentors!</h3>
                 <p className="text-charcoal text-sm md:text-base max-w-md mx-auto mb-6">
-                  Thank you, <strong>{submittedData?.name || 'Student'}</strong>. Our academic counselor will call you at <strong>{submittedData?.phone}</strong> shortly to discuss {submittedData?.program} batches.
+                  Thank you, <strong>{submittedData?.name || 'Student'}</strong>. Your enquiry details have been delivered directly to <strong>{businessInfo.email}</strong>. Our counselors will call you at <strong>{submittedData?.phone}</strong> shortly.
                 </p>
 
                 <div className="bg-warmwhite p-4 rounded-xl border border-navy-50 mb-6 text-left text-xs text-charcoal">
                   <p><strong>Selected Program:</strong> {submittedData?.program}</p>
                   <p><strong>Target Class:</strong> {submittedData?.studentClass}</p>
-                  <p className="mt-1 text-navy-500">Need instant answers right now? You can connect straight away via WhatsApp.</p>
+                  {submittedData?.locality && <p><strong>Locality:</strong> {submittedData?.locality}</p>}
+                  <p className="mt-2 text-navy-600">Want to speak right away? You can also message mentors directly on WhatsApp.</p>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <Button 
                     variant="primary" 
                     className="bg-[#25D366] hover:bg-[#20ba59] border-none text-white text-sm"
-                    onClick={handleInstantWhatsAppChat}
+                    onClick={() => {
+                      const waUrl = getEncodedWhatsAppUrl(submittedData || formData);
+                      trackWhatsAppClick(submittedData?.program || formData.program, 'success_state_chat');
+                      window.open(waUrl, '_blank', 'noopener,noreferrer');
+                    }}
                   >
                     Open in WhatsApp
                   </Button>
@@ -154,6 +213,92 @@ export function CallToAction({ defaultProgram = 'JEE' }) {
                     }}
                   >
                     Submit Another Query
+                  </Button>
+                </div>
+              </div>
+            ) : status === 'whatsapp_ready' ? (
+              <div className="text-center py-8 md:py-10">
+                <div className="w-16 h-16 bg-[#25D366]/10 text-[#25D366] rounded-full flex items-center justify-center mx-auto mb-5 border border-[#25D366]/20">
+                  <MessageSquare className="w-8 h-8" />
+                </div>
+                <h3 className="text-2xl font-bold text-navy-950 mb-2">WhatsApp Opened</h3>
+
+                {/* Truthful status notice */}
+                <div className="bg-amber-50 border border-amber-200 text-amber-900 rounded-xl p-4 mb-6 text-left text-xs leading-relaxed">
+                  <div className="flex items-center gap-1.5 font-bold mb-1 text-amber-800">
+                    <Clock className="w-4 h-4 text-amber-600 flex-shrink-0" />
+                    <span>Important: Press "Send" in WhatsApp</span>
+                  </div>
+                  <p>
+                    Your enquiry details have been prepared with your course preferences. <strong>Please tap 'Send' in WhatsApp</strong> to deliver your message directly to Wavefront Academy mentors.
+                  </p>
+                  <p className="mt-2 text-amber-700">
+                    <em>(Notice: Automatic background email dispatch is pending Google Apps Script endpoint deployment.)</em>
+                  </p>
+                </div>
+
+                <div className="bg-warmwhite p-4 rounded-xl border border-navy-50 mb-6 text-left text-xs text-charcoal">
+                  <p><strong>Student / Parent:</strong> {submittedData?.name}</p>
+                  <p><strong>Phone:</strong> {submittedData?.phone}</p>
+                  <p><strong>Program:</strong> {submittedData?.program} (Class {submittedData?.studentClass})</p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <Button
+                    variant="primary"
+                    className="bg-[#25D366] hover:bg-[#20ba59] border-none text-white text-sm"
+                    onClick={() => {
+                      const waUrl = getEncodedWhatsAppUrl(submittedData || formData);
+                      trackWhatsAppClick(submittedData?.program || formData.program, 'reopen_whatsapp');
+                      window.open(waUrl, '_blank', 'noopener,noreferrer');
+                    }}
+                  >
+                    Re-open WhatsApp
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="text-sm px-6"
+                    onClick={() => {
+                      setStatus('idle');
+                    }}
+                  >
+                    Edit Details
+                  </Button>
+                </div>
+              </div>
+            ) : status === 'error' ? (
+              <div className="text-center py-8 md:py-10">
+                <div className="w-16 h-16 bg-red-50 text-red-500 rounded-full flex items-center justify-center mx-auto mb-5">
+                  <AlertCircle className="w-8 h-8" />
+                </div>
+                <h3 className="text-2xl font-bold text-navy-950 mb-2">Notice: Email Delivery Failed</h3>
+                <p className="text-charcoal text-sm max-w-md mx-auto mb-4">
+                  {errorMessage || 'Unable to deliver your enquiry via the automatic email endpoint.'}
+                </p>
+
+                <div className="bg-warmwhite p-4 rounded-xl border border-navy-50 mb-6 text-left text-xs text-charcoal">
+                  <p className="font-semibold text-navy-900 mb-1">Send via WhatsApp Instead (Recommended):</p>
+                  <p className="text-navy-700">Your details are preserved. You can chat directly with our counselors right now.</p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <Button
+                    variant="primary"
+                    className="bg-[#25D366] hover:bg-[#20ba59] border-none text-white text-sm"
+                    onClick={() => {
+                      const waUrl = getEncodedWhatsAppUrl(submittedData || formData);
+                      trackWhatsAppClick(submittedData?.program || formData.program, 'error_fallback_whatsapp');
+                      window.open(waUrl, '_blank', 'noopener,noreferrer');
+                    }}
+                  >
+                    Send via WhatsApp
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="text-sm px-6"
+                    onClick={() => setStatus('idle')}
+                  >
+                    Try Again
                   </Button>
                 </div>
               </div>

@@ -2,6 +2,7 @@ import { PageSEO } from '../components/seo/PageSEO';
 import { CallToAction } from '../components/sections/CallToAction';
 import { Phone, Mail, MapPin, Clock, MessageSquare } from 'lucide-react';
 import { businessInfo } from '../data/businessInfo';
+import { trackPhoneClick, trackWhatsAppClick } from '../utils/analytics';
 
 export function ContactPage() {
   const contactSchema = {
@@ -12,7 +13,9 @@ export function ContactPage() {
     "url": `${businessInfo.website}/contact`,
     "mainEntity": {
       "@type": "EducationalOrganization",
+      "@id": `${businessInfo.website}/#organization`,
       "name": businessInfo.name,
+      "url": businessInfo.website,
       "telephone": businessInfo.phoneRaw,
       "email": businessInfo.email,
       "address": {
@@ -61,7 +64,11 @@ export function ContactPage() {
               </div>
               <h3 className="text-lg font-bold text-navy-950 mb-2">Call Us</h3>
               <p className="text-sm text-charcoal mb-4">Direct academic guidance & batch info</p>
-              <a href={`tel:${businessInfo.phoneRaw}`} className="text-accent-600 font-bold hover:underline">
+              <a
+                href={`tel:${businessInfo.phoneRaw}`}
+                onClick={() => trackPhoneClick('contact_page')}
+                className="text-accent-600 font-bold hover:underline"
+              >
                 {businessInfo.phone}
               </a>
             </div>
@@ -72,7 +79,13 @@ export function ContactPage() {
               </div>
               <h3 className="text-lg font-bold text-navy-950 mb-2">WhatsApp</h3>
               <p className="text-sm text-charcoal mb-4">Chat directly for quick queries</p>
-              <a href={businessInfo.whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-[#25D366] font-bold hover:underline">
+              <a
+                href={businessInfo.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick('general', 'contact_page')}
+                className="text-[#25D366] font-bold hover:underline"
+              >
                 Message on WhatsApp
               </a>
             </div>

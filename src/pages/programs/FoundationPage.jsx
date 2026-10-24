@@ -15,8 +15,9 @@ export function FoundationPage() {
     "description": "Foundational academic coaching for classes 8th, 9th, and 10th across Maharashtra SSC, CBSE, and ICSE boards in Virar East.",
     "provider": {
       "@type": "EducationalOrganization",
+      "@id": `${businessInfo.website}/#organization`,
       "name": businessInfo.name,
-      "sameAs": businessInfo.website
+      "url": businessInfo.website
     }
   };
 

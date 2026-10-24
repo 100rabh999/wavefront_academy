@@ -11,10 +11,15 @@ export function PageSEO({
 }) {
   const siteName = 'Wavefront Academy';
   const baseUrl = 'https://wavefrontacademy.web.app';
-  const fullCanonical = canonicalPath ? `${baseUrl}${canonicalPath}` : baseUrl;
 
-  // Don't append siteName if the title already includes it or is very specific
-  const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
+  // Normalize canonicalPath: ensure single authoritative path without query params or hash
+  const cleanPath = canonicalPath ? canonicalPath.split('?')[0].split('#')[0] : '';
+  const normalizedPath = cleanPath === '/' || cleanPath === '' ? '' : cleanPath.startsWith('/') ? cleanPath : `/${cleanPath}`;
+  const fullCanonical = `${baseUrl}${normalizedPath}`;
+
+  // Case-insensitive check to prevent duplicating "| Wavefront Academy"
+  const hasBrand = title.toLowerCase().includes(siteName.toLowerCase());
+  const fullTitle = hasBrand ? title : `${title} | ${siteName}`;
 
   return (
     <Helmet>

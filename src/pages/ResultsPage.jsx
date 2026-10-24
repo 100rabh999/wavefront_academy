@@ -11,6 +11,17 @@ export function ResultsPage() {
         description="See why Wavefront Academy is the trusted choice in Virar. View our outstanding student achievements in JEE Mains, NEET, MHT-CET, and board exams."
         canonicalPath="/results"
       />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4 text-center">
+        <span className="inline-block py-1.5 px-4 rounded-full bg-accent-50 text-accent-700 font-bold text-xs md:text-sm mb-4 tracking-wide uppercase">
+          Proven Academic Track Record
+        </span>
+        <h1 className="text-4xl md:text-5xl font-display font-bold text-navy-950 mb-4">
+          Student Results & Examination Achievements
+        </h1>
+        <p className="text-base md:text-lg text-charcoal max-w-2xl mx-auto leading-relaxed">
+          Celebrating the hard work and competitive percentiles of our students in MHT-CET, JEE Mains, NEET, and Maharashtra Board examinations in Virar East.
+        </p>
+      </div>
       <Results />
       <CallToAction />
     </div>

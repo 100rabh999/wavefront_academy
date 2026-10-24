@@ -15,8 +15,9 @@ export function SciencePage() {
     "description": "Comprehensive HSC Maharashtra Board and CBSE Science coaching for Physics, Chemistry, Mathematics, and Biology in Virar East.",
     "provider": {
       "@type": "EducationalOrganization",
+      "@id": `${businessInfo.website}/#organization`,
       "name": businessInfo.name,
-      "sameAs": businessInfo.website
+      "url": businessInfo.website
     }
   };
 

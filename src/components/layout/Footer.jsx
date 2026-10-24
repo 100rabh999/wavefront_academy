@@ -1,6 +1,7 @@
 import { Phone, Mail, MapPin, Globe, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { businessInfo } from '../../data/businessInfo';
+import { trackPhoneClick, trackWhatsAppClick } from '../../utils/analytics';
 
 export function Footer() {
   return (
@@ -21,11 +22,22 @@ export function Footer() {
               Best coaching classes in Virar & Nallasopara for JEE, NEET, MHT-CET, 11th-12th Science, and School sections.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent-500 hover:text-white transition-colors">
-                <Globe className="w-5 h-5" />
+              <a
+                href={businessInfo.website}
+                aria-label="Visit Wavefront Academy Website"
+                className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent-500 hover:text-white transition-colors"
+              >
+                <Globe className="w-5 h-5" aria-hidden="true" />
               </a>
-              <a href="https://wa.me/917058107207" className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#25D366] hover:text-white transition-colors">
-                <MessageCircle className="w-5 h-5" />
+              <a
+                href={businessInfo.whatsappUrl}
+                aria-label="Chat with Wavefront Academy on WhatsApp"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick('general', 'footer')}
+                className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#25D366] hover:text-white transition-colors"
+              >
+                <MessageCircle className="w-5 h-5" aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -73,7 +85,11 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <Phone className="w-5 h-5 mr-3 text-accent-500 flex-shrink-0 mt-0.5" />
-                <a href={`tel:${businessInfo.phoneRaw}`} className="text-navy-300 hover:text-white transition-colors text-sm font-medium">
+                <a
+                  href={`tel:${businessInfo.phoneRaw}`}
+                  onClick={() => trackPhoneClick('footer')}
+                  className="text-navy-300 hover:text-white transition-colors text-sm font-medium"
+                >
                   {businessInfo.phone}
                 </a>
               </li>

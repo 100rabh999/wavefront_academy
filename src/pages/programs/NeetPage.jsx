@@ -15,8 +15,9 @@ export function NeetPage() {
     "description": "Rigorous medical entrance exam coaching with deep NCERT Biology coverage, Physics numerical practice, and Chemistry problem solving in Virar East.",
     "provider": {
       "@type": "EducationalOrganization",
+      "@id": `${businessInfo.website}/#organization`,
       "name": businessInfo.name,
-      "sameAs": businessInfo.website
+      "url": businessInfo.website
     }
   };
 
