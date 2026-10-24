@@ -141,7 +141,7 @@ export function FoundationPage() {
         </div>
       </section>
 
-      <CallToAction />
+      <CallToAction defaultProgram="Foundation" />
     </div>
   );
 }

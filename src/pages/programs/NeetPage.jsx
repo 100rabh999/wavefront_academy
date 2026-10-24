@@ -141,7 +141,7 @@ export function NeetPage() {
         </div>
       </section>
 
-      <CallToAction />
+      <CallToAction defaultProgram="NEET" />
     </div>
   );
 }

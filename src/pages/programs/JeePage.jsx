@@ -139,7 +139,7 @@ export function JeePage() {
         </div>
       </section>
 
-      <CallToAction />
+      <CallToAction defaultProgram="JEE" />
     </div>
   );
 }

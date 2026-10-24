@@ -1,58 +1,93 @@
-# SEO Implementation Roadmap: Wavefront Academy
+# Wavefront Academy: Growth, Advanced SEO, AI Visibility & Conversion Roadmap
 
-A phased, low-risk execution plan to achieve maximum organic and local visibility in Virar, Maharashtra.
+## 1. Executive Summary & Repository Audit Findings (Phase 1)
 
----
-
-## Phase 1: Immediate Fixes (Day 1 - Codebase Correction)
-- [x] **Correct NAP Discrepancy Across Codebase (P0):** Fix address in `Footer.jsx` and `CallToAction.jsx` to "Shop No. 11, Maitry Pooja Apartment, Near Manvelpada Talav, Virar East, Maharashtra 401303".
-- [x] **Fix Click-to-Call Functionality (P1):** Ensure all telephone references use clickable `<a href="tel:+917058107207">` tags.
-- [x] **Replace Unsplash Stock Photo in `Faculty.jsx` (P1):** Replace generic Unsplash image with authentic `/classroom.jpg` from repository.
-- [x] **Consolidate Obsolete Static Directories (P1):** Remove lingering static directories in `public/courses`, `public/about`, `public/contact`, `public/results` that conflict with Firebase SPA rewrites.
-- [x] **Add Missing High-Intent Program Pages (P1):** Implement `/programs/neet`, `/programs/mht-cet`, `/programs/science`, and `/contact` in React Router.
-- [x] **Upgrade Sitemaps with Image SEO Extension (P1):** Rewrite `sitemap.xml` with standard XML image extensions (`xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"`).
-- [x] **Enhance LocalBusiness JSON-LD (P2):** Update `index.html` schema with precise geo-coordinates (`19.4582`, `72.8123`), opening hours, and Google Maps URL.
-
----
-
-## Phase 2: First 7 Days (Webmaster Verification & Image Compression)
-1. **Google Search Console (GSC) Setup:**
-   - Verify domain or URL-prefix property (`https://wavefrontacademy.web.app/`).
-   - Submit new `sitemap.xml`.
-   - Run URL Inspection on `/`, `/programs/jee`, `/programs/neet`, `/programs/mht-cet`.
-2. **Google Business Profile Alignment:**
-   - Verify that GBP primary category is set to **"Coaching Center"** or **"Educational Institution"**.
-   - Set secondary categories: *Tuition Centre*, *Test Preparation Center*, *Educational Consultant*.
-   - Ensure the business name matches exactly: **Wavefront Academy**.
-   - Align primary website link in GBP directly to `https://wavefrontacademy.web.app/`.
-3. **Image Optimization & Compression:**
-   - Convert oversized PNG files (`>1MB`) to modern WebP format (<150KB each).
-   - Set descriptive filenames following the pattern `[program]-[topic]-virar.webp`.
+### Repository State & Architecture
+- **Framework & Tooling**: Vite 8.2.2 + React 19.2.8 + React Router DOM 7.18.3 + Tailwind CSS 3.4.19 + `react-helmet-async` 3.0.0.
+- **Hosting**: Firebase Hosting (`wavefrontacademy.web.app`), clean URLs enabled, 301 redirects configured for legacy URLs (`/courses/*` -> `/programs/*`).
+- **Git Status**: Working tree clean, last commit `16c15e1` (updated SEO). Build and oxlint passing.
+- **Existing Strengths**:
+  - Consistent NAP (`businessInfo.js`) with coordinates `19.4425421`, `72.8200961` (Shop No. 11, Maitry Pooja Apt, Near Manvelpada Talav, Virar East).
+  - Dedicated pages for JEE, NEET, MHT-CET, Science, and School Foundation with Course schemas.
+  - Image sitemap configured in `sitemap.xml`.
+- **Gaps Identified**:
+  - **Bot & AI Crawler Access**: `robots.txt` lacks explicit directives for `OAI-SearchBot`, `PerplexityBot`, and `ClaudeBot`.
+  - **Conversion Engineering**:
+    - The lead form in `CallToAction.jsx` is simulated via `setTimeout` without validation, course-context awareness, honeypot spam protection, or real submission handling.
+    - Lack of persistent floating quick-action buttons (WhatsApp & Call) on mobile.
+    - WhatsApp links use a generic URL (`https://wa.me/917058107207`) without course-specific prefilled messages.
+  - **AI Engine Grounding**: Missing dedicated machine-readable `/llms.txt` and rich FAQ structured data for question-answering engines.
+  - **Analytics & Attribution**: Zero analytics script installed (no Google Tag Manager / GA4 ID, no tracking on click-to-call, WhatsApp click, or form submission).
+  - **Email Infrastructure**: Academy currently relies on a single raw Gmail account (`wavefrontacademy07@gmail.com`). No transactional email dispatch, webhook, or email service provider (ESP) connection.
 
 ---
 
-## Phase 3: Days 8–30 (Local Authority & Review Generation)
-1. **Ethical Parent & Student Review Drive:**
-   - Create a short Google Maps review link (via GBP Dashboard).
-   - Reach out to 2025/2026 toppers (Chandan Chaubey, Harsha Jha, Akshay Karande) and parents to share honest reviews mentioning specific exams (MHT-CET, JEE) and faculty attention.
-2. **Local Citation Audit:**
-   - Audit and claim consistent NAP on Justdial, Sulekha, IndiaMART, Facebook, and local education directories.
-3. **Core Web Vitals Verification:**
-   - Test production build on PageSpeed Insights for mobile LCP (<2.5s) and CLS (<0.1).
+## 2. Prioritized Implementation Plan
+
+| Priority | Phase | Core Deliverables | Impact |
+| :--- | :--- | :--- | :--- |
+| **P0** | **Phase 4 & 6: Conversion & WhatsApp** | - Add persistent Mobile Sticky Action Bar (Call + WhatsApp).<br>- Dynamic pre-filled WhatsApp messages per course.<br>- Production-grade lead form with input sanitization, spam honeypot, course auto-select, privacy consent, and WhatsApp submission bridge. | Immediate lead capture & attribution. |
+| **P0** | **Phase 2 & 3: Advanced SEO & AI Visibility** | - Update `robots.txt` with OAI-SearchBot, PerplexityBot, Google-Extended.<br>- Create machine-readable `/llms.txt` and `/academy-facts.json`.<br>- Embed FAQ schema (`FAQPage` LD+JSON) on `FAQPage.jsx` and center coordinates on all page breadcrumbs.<br>- Enhance internal linking across courses, fees, and contact. | Local search rankings & citation in generative AI engines. |
+| **P1** | **Phase 7: Analytics & Attribution** | - Lightweight privacy-conscious event tracker utility (`trackEvent`).<br>- Track phone clicks, WhatsApp clicks, course selection, and form submission events.<br>- Ready hooks for Google Analytics 4 (GA4) / GTM without blocking rendering. | Accurate lead attribution and funnel visibility. |
+| **P1** | **Phase 5: Email Communication Architecture** | - Email infrastructure recommendation & architecture (free/low-cost tiers like Resend / Brevo / Formspree).<br>- Deliver 4 ready-to-use email templates (Enquiry Acknowledgement, Course Brochure, Admission Follow-up, Announcement).<br>- SPF, DKIM, DMARC DNS configuration guide for custom domain or verified sender. | Professional student/parent lifecycle communication. |
+| **P2** | **Phase 8: Local Reputation & Trust** | - Google Business Profile (GBP) optimization checklist (categories, attributes, photo cadence, review response playbook).<br>- QR code & direct review link strategy for enrolled parents and students. | Local 3-Pack domination in Virar East & Manvelpada. |
 
 ---
 
-## Phase 4: Days 31–60 (Content Deepening & Long-Tail Capture)
-1. **Syllabus & Exam Pattern Guides:**
-   - Add downloadable or interactive MHT-CET and JEE syllabus breakdowns tailored for Maharashtra State Board students.
-2. **Faculty Profiles (E-E-A-T):**
-   - Expand `faculty.js` with individual teacher profiles, subject specializations, and qualifications to satisfy Google's Quality Rater Guidelines.
+## 3. Detailed Architectural Specifications
 
----
+### A. Phase 2 & 3 — Robots, LLMs.txt & Search Engine Grounding
+1. **Robots.txt Upgrades**:
+   - Explicitly permit Googlebot, Bingbot, OAI-SearchBot, PerplexityBot, and Applebot.
+   - Point to `sitemap.xml` and `llms.txt`.
+2. **`public/llms.txt`**:
+   - Standard AI engine documentation format summarizing:
+     - Entity name, physical location, landmark (Near Manvelpada Talav, Virar East).
+     - Verified programs: JEE Mains/Advanced, NEET-UG, MHT-CET, 11th & 12th Science (State Board & CBSE), 8th-10th School Foundation.
+     - Verified faculty and proven top ranks (99.308%ile Chandan Chaubey, 98.56%ile Harsha Jha, 98.33%ile Akshay Karande).
+     - Working hours, contact numbers, transparent fee indicators.
+3. **Structured Data Enhancements**:
+   - Add `FAQPage` Schema to `FAQPage.jsx`.
+   - Add `BreadcrumbList` Schema to Program pages.
 
-## Phase 5: Days 61–90 (Performance Tracking & Prerendering)
-1. **Search Console Analytics Review:**
-   - Track organic impressions for "best coaching in virar", "jee classes virar", "mht cet coaching virar".
-   - Isolate Google Images performance report to check image impressions and click-through rates.
-2. **Prerendering / SSG Evaluation:**
-   - If Googlebot render budget delays indexation of dynamic text, evaluate Vite static site generation (`vite-plugin-prerender` or SSG) to emit pure HTML files per route at build time.
+### B. Phase 4 & 6 — Conversion Engine, Form & WhatsApp Workflow
+1. **Mobile Quick Action Bar**:
+   - Fixed bottom dock on mobile (`md:hidden`) with dual high-contrast action triggers:
+     - 📞 Call (+91 70581 07207)
+     - 💬 WhatsApp (with contextual message)
+2. **Context-Aware Enquiry Form**:
+   - Accept pre-selected course from page context or URL query (`?course=jee`).
+   - Fields: Student/Parent Name, Mobile Number, Standard (Class), Target Program, Area/Locality in Virar.
+   - Parental consent notice for students below 18 years ("I consent to Wavefront Academy contacting me regarding admissions").
+   - Spam Honeypot field (hidden from humans, detects automated bot submissions).
+   - Fallback Dual-Path Handler:
+     1. Prepares instant WhatsApp direct enquiry redirect with formatted lead details.
+     2. Dispatches payload to academy webhook/Formspree/Sheets API if configured.
+3. **Course-Specific Pre-Filled WhatsApp Messages**:
+   - JEE: *"Hello Wavefront Academy, I would like details regarding JEE Mains & Advanced batches for 2026/27."*
+   - NEET: *"Hello Wavefront Academy, I want to enquire about NEET medical coaching and batch timings in Virar East."*
+   - MHT-CET: *"Hello Wavefront Academy, please share information on MHT-CET batches and test series."*
+   - 11th/12th Science: *"Hello Wavefront Academy, I am looking for 11th/12th Science coaching (PCM/PCB)."*
+   - Foundation: *"Hello Wavefront Academy, I am enquiring for school foundation classes (8th–10th SSC/CBSE)."*
+
+### C. Phase 5 — Email Infrastructure & Templates
+- **Provider Recommendation**: Free tier of Brevo or Resend (up to 3,000 free transactional emails/month) or serverless Formspree with auto-responder.
+- **DNS Records**: SPF (`v=spf1 include:... ~all`), DKIM (`k=rsa; p=...`), and DMARC (`v=DMARC1; p=none; rua=mailto:...`).
+- **Templates**:
+  1. *Immediate Enquiry Acknowledgment & Center Direction*
+  2. *Program Curriculum & Schedule Brochure*
+  3. *Admission Follow-Up & Free Counseling Invitation*
+  4. *Academic Update & Scholarship Alert*
+
+### D. Phase 7 — Analytics & Attribution
+- Clean, non-intrusive event emitter in `src/utils/analytics.js`:
+  - `trackPhoneClick(source)`
+  - `trackWhatsAppClick(program, source)`
+  - `trackFormSubmission(program, leadDataSummary)`
+  - Supports Google Tag Manager / GA4 (`window.gtag`) if active, with graceful fallback.
+
+### E. Phase 8 — Local Reputation & Review Strategy
+- Action plan for Google Business Profile:
+  - Exact Primary Category: "Coaching Center" / "Tutoring Service".
+  - Secondary: "Test Preparation Center", "Science Academy".
+  - Review generation protocol post-test series or board results.

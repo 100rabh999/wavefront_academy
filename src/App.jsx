@@ -17,11 +17,12 @@ import { MhtCetPage } from './pages/programs/MhtCetPage'
 import { SciencePage } from './pages/programs/SciencePage'
 import { FoundationPage } from './pages/programs/FoundationPage'
 import { ScrollToTop } from './components/layout/ScrollToTop'
+import { MobileStickyBar } from './components/layout/MobileStickyBar'
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen flex flex-col selection:bg-accent-200 selection:text-navy-900 bg-warmwhite">
+      <div className="min-h-screen flex flex-col selection:bg-accent-200 selection:text-navy-900 bg-warmwhite pb-14 md:pb-0">
         <ScrollToTop />
         <Navbar />
         <main className="flex-grow">
@@ -50,6 +51,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <MobileStickyBar />
       </div>
     </BrowserRouter>
   )

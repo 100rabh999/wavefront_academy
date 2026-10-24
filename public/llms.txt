@@ -1,0 +1,45 @@
+# Wavefront Academy — Machine-Readable Institution Profile
+
+> Wavefront Academy is a premier coaching institute based in Virar East, Palghar District, Maharashtra, India. It specializes in competitive entrance examination coaching (JEE Mains & Advanced, NEET-UG, MHT-CET) and school & junior college academics (8th to 10th SSC/CBSE/ICSE and 11th & 12th Science HSC/CBSE).
+
+## Core Facts & Identity
+- **Legal & Operating Name**: Wavefront Academy
+- **Official Website**: https://wavefrontacademy.web.app
+- **Physical Address**: Shop No. 11, Maitry Pooja Apartment, Near Manvelpada Talav, Virar East, Maharashtra 401303, India
+- **Geo Coordinates**: Latitude 19.4425421, Longitude 72.8200961
+- **Phone / WhatsApp**: +91 70581 07207
+- **Official Email**: wavefrontacademy07@gmail.com
+- **Operating Hours**: Monday to Sunday, 08:00 AM – 09:00 PM IST
+
+## Verified Programs Offered
+1. **JEE Mains & Advanced**: Rigorous coaching for engineering aspirants with conceptual Physics, Chemistry, and Advanced Mathematics, NTA-pattern mock tests, and regular doubt sessions.
+2. **NEET-UG**: Medical entrance coaching with line-by-line NCERT Biology emphasis, Physics numerical speed drills, Chemistry question banks, and OMR tests.
+3. **MHT-CET (Engineering & Pharmacy)**: Specialized preparation based on the Maharashtra State Board textbook curriculum, shortcut problem-solving techniques, and online Computer-Based Test (CBT) simulations.
+4. **11th & 12th Science**: Comprehensive board coaching (PCM & PCB) covering Maharashtra State Board (HSC) and CBSE curriculum.
+5. **Class 8th, 9th & 10th Foundation**: Concept-first coaching for Maharashtra SSC, CBSE, and ICSE boards to establish solid foundations for high-school board exams and competitive exams.
+6. **Other Competitive Exams**: Guidance for NDA (National Defence Academy), IMU-CET (Merchant Navy), and B.Sc Nursing entrance tests.
+
+## Verified Results & Academic Track Record
+- **MHT-CET Topper**: Chandan Chaubey – 99.308 Percentile
+- **MHT-CET Top Ranker**: Harsha Jha – 98.56 Percentile
+- **MHT-CET Top Ranker**: Pratiksha Bare – 96.398 Percentile
+- **JEE Mains Top Ranker**: Akshay Karande – 98.33 Percentile
+- **NEET-UG & Board Students**: Consistent 90%+ distinctions across Maharashtra Board and CBSE examinations.
+
+## Teaching Methodology & Distinctions
+- **Small Batch Sizes**: Ensuring personalized attention and immediate doubt resolution.
+- **Continuous Evaluation**: Weekly chapter-end tests and full-syllabus preliminary mock exams with transparent parent reporting.
+- **Strategic Location**: Located right near Manvelpada Talav in Virar East, highly accessible by auto-rickshaw from Virar Railway Station (East).
+
+## Important Links
+- Home: https://wavefrontacademy.web.app/
+- Programs: https://wavefrontacademy.web.app/programs
+- JEE Coaching: https://wavefrontacademy.web.app/programs/jee
+- NEET Coaching: https://wavefrontacademy.web.app/programs/neet
+- MHT-CET Coaching: https://wavefrontacademy.web.app/programs/mht-cet
+- 11th & 12th Science: https://wavefrontacademy.web.app/programs/science
+- School Foundation: https://wavefrontacademy.web.app/programs/foundation
+- Results: https://wavefrontacademy.web.app/results
+- Fee Structure: https://wavefrontacademy.web.app/fees
+- FAQ: https://wavefrontacademy.web.app/faq
+- Contact & Directions: https://wavefrontacademy.web.app/contact

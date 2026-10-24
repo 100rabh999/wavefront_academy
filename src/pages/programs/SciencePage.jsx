@@ -141,7 +141,7 @@ export function SciencePage() {
         </div>
       </section>
 
-      <CallToAction />
+      <CallToAction defaultProgram="Science" />
     </div>
   );
 }

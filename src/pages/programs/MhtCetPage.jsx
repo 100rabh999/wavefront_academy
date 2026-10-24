@@ -164,7 +164,7 @@ export function MhtCetPage() {
         </div>
       </section>
 
-      <CallToAction />
+      <CallToAction defaultProgram="MHT-CET" />
     </div>
   );
 }

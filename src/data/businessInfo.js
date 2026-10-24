@@ -24,5 +24,12 @@ export const businessInfo = {
   },
   googleMapsUrl: 'https://maps.app.goo.gl/xqBZftfyT7MTyN5FA',
   whatsappUrl: 'https://wa.me/917058107207',
+  getWhatsAppUrl: (courseTitle = '') => {
+    const base = 'https://wa.me/917058107207';
+    if (!courseTitle) {
+      return `${base}?text=${encodeURIComponent('Hello Wavefront Academy, I would like to enquire about coaching batches and admissions.')}`;
+    }
+    return `${base}?text=${encodeURIComponent(`Hello Wavefront Academy, I would like to enquire about ${courseTitle} coaching at your Virar East center.`)}`;
+  },
   openingHours: 'Mon-Sun: 08:00 - 21:00'
 };
