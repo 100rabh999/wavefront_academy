@@ -18,16 +18,37 @@ export function JeePage() {
       "@id": `${businessInfo.website}/#organization`,
       "name": businessInfo.name,
       "url": businessInfo.website
+    },
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "In-Person",
+      "location": {
+        "@type": "Place",
+        "name": businessInfo.name,
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": businessInfo.address.street,
+          "addressLocality": businessInfo.address.locality,
+          "addressRegion": businessInfo.address.state,
+          "postalCode": businessInfo.address.postalCode,
+          "addressCountry": businessInfo.address.country
+        }
+      }
     }
   };
 
   return (
     <div className="pt-24 md:pt-28 bg-warmwhite">
       <PageSEO 
-        title="JEE Coaching Classes in Virar East | Mains & Advanced Prep"
-        description="Rigorous JEE Mains and Advanced training at Wavefront Academy in Virar East. Advanced problem solving, NTA mock tests, and personalized mentoring."
+        title="JEE Coaching Classes in Virar | Wavefront Academy"
+        description="Rigorous JEE Mains and Advanced training at Wavefront Academy in Virar East. Advanced numerical practice, NTA-pattern mock tests, and mentor support."
         canonicalPath="/programs/jee"
         schema={courseSchema}
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Programs', path: '/programs' },
+          { name: 'JEE Mains & Advanced', path: '/programs/jee' }
+        ]}
       />
 
       {/* Breadcrumb & Hero */}
@@ -129,18 +150,15 @@ export function JeePage() {
             </div>
             <div className="relative">
               <div className="absolute inset-0 bg-accent-50 rounded-[2rem] transform translate-x-4 translate-y-4 -z-10"></div>
-              <picture>
-                <source srcSet="/hero-banner-3.avif" type="image/avif" />
-                <img
-                  src="/hero-banner-3.jpg"
-                  alt="JEE Advanced Preparation at Wavefront Academy Virar East"
-                  width="1040"
-                  height="780"
-                  loading="lazy"
-                  decoding="async"
-                  className="rounded-[2rem] shadow-premium object-cover w-full aspect-[4/3]"
-                />
-              </picture>
+              <img
+                src="/hero-banner-3.jpg"
+                alt="JEE Advanced Preparation at Wavefront Academy Virar East"
+                width="1040"
+                height="780"
+                loading="lazy"
+                decoding="async"
+                className="rounded-[2rem] shadow-premium object-cover w-full aspect-[4/3]"
+              />
             </div>
           </div>
         </div>

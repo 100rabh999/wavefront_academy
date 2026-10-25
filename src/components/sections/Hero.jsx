@@ -4,18 +4,15 @@ import { Button } from '../ui/Button';
 
 const resultBanners = [
   {
-    avif: '/hero-banner-1.avif',
-    fallback: '/hero-banner-1.jpg',
+    image: '/hero-banner-1.jpg',
     alt: 'MHT-CET Toppers 2024–25 Results at Wavefront Academy Virar'
   },
   {
-    avif: '/hero-banner-2.avif',
-    fallback: '/hero-banner-2.jpg',
+    image: '/hero-banner-2.jpg',
     alt: 'JEE Main and Advanced Achievers Wavefront Academy Virar'
   },
   {
-    avif: '/hero-banner-3.avif',
-    fallback: '/hero-banner-3.jpg',
+    image: '/hero-banner-3.jpg',
     alt: 'Board Exam and Competitive Exam Milestones Wavefront Academy'
   }
 ];
@@ -100,19 +97,16 @@ export function Hero() {
                   }}
                   className="w-full h-full flex items-center justify-center"
                 >
-                  <picture className="w-full h-full">
-                    <source srcSet={activeBanner.avif} type="image/avif" />
-                    <img
-                      src={activeBanner.fallback}
-                      alt={activeBanner.alt}
-                      width={1040}
-                      height={780}
-                      loading={isLcp ? 'eager' : 'lazy'}
-                      fetchPriority={isLcp ? 'high' : 'auto'}
-                      decoding={isLcp ? 'sync' : 'async'}
-                      className="w-full h-full object-cover rounded-2xl shadow-2xl drop-shadow-xl aspect-[4/3]"
-                    />
-                  </picture>
+                  <img
+                    src={activeBanner.image}
+                    alt={activeBanner.alt}
+                    width={1040}
+                    height={780}
+                    loading={isLcp ? 'eager' : 'lazy'}
+                    fetchPriority={isLcp ? 'high' : 'auto'}
+                    decoding={isLcp ? 'sync' : 'async'}
+                    className="w-full h-full object-cover rounded-2xl shadow-2xl drop-shadow-xl aspect-[4/3]"
+                  />
                 </motion.div>
               </AnimatePresence>
             </div>

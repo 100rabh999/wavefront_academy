@@ -7,9 +7,13 @@ export function AboutPage() {
   return (
     <div className="pt-24 md:pt-28">
       <PageSEO 
-        title="About Us | Trusted Coaching Institute in Virar"
+        title="About Wavefront Academy | Coaching in Virar"
         description="Learn about Wavefront Academy's mission, expert faculty, and structured teaching methodology that helps students in Virar excel in their academic and competitive exams."
         canonicalPath="/about"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'About Us', path: '/about' }
+        ]}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4 text-center">
         <span className="inline-block py-1.5 px-4 rounded-full bg-accent-50 text-accent-700 font-bold text-xs md:text-sm mb-4 tracking-wide uppercase">

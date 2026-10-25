@@ -7,10 +7,13 @@ export function PageSEO({
   canonicalPath, 
   type = 'website',
   schema,
+  breadcrumbs,
+  image = '/walogo.png',
   noindex = false
 }) {
   const siteName = 'Wavefront Academy';
   const baseUrl = 'https://wavefrontacademy.web.app';
+  const fullImageUrl = image.startsWith('http') ? image : `${baseUrl}${image.startsWith('/') ? image : `/${image}`}`;
 
   // Normalize canonicalPath: ensure single authoritative path without query params or hash
   const cleanPath = canonicalPath ? canonicalPath.split('?')[0].split('#')[0] : '';
@@ -21,11 +24,40 @@ export function PageSEO({
   const hasBrand = title.toLowerCase().includes(siteName.toLowerCase());
   const fullTitle = hasBrand ? title : `${title} | ${siteName}`;
 
+  // Generate BreadcrumbList structured data if breadcrumbs array is provided
+  // breadcrumbs format: [{ name: 'Home', path: '/' }, { name: 'Programs', path: '/programs' }]
+  const breadcrumbSchema = (breadcrumbs && breadcrumbs.length > 0) ? {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": breadcrumbs.map((crumb, idx) => {
+      const crumbCleanPath = crumb.path ? crumb.path.split('?')[0].split('#')[0] : '';
+      const crumbNormalized = crumbCleanPath === '/' || crumbCleanPath === '' ? '' : crumbCleanPath.startsWith('/') ? crumbCleanPath : `/${crumbCleanPath}`;
+      return {
+        "@type": "ListItem",
+        "position": idx + 1,
+        "name": crumb.name,
+        "item": `${baseUrl}${crumbNormalized}`
+      };
+    })
+  } : null;
+
+  // Collect schemas into an array to render
+  const schemasToRender = [];
+  if (schema) {
+    if (Array.isArray(schema)) {
+      schemasToRender.push(...schema);
+    } else {
+      schemasToRender.push(schema);
+    }
+  }
+  if (breadcrumbSchema) {
+    schemasToRender.push(breadcrumbSchema);
+  }
+
   return (
     <Helmet>
       {/* Primary Meta Tags */}
       <title>{fullTitle}</title>
-      <meta name="title" content={fullTitle} />
       <meta name="description" content={description} />
       
       {/* Canonical and Robots */}
@@ -42,21 +74,22 @@ export function PageSEO({
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:site_name" content={siteName} />
-      <meta property="og:image" content={`${baseUrl}/walogo.png`} />
+      <meta property="og:image" content={fullImageUrl} />
+      <meta property="og:locale" content="en_IN" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={fullCanonical} />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={`${baseUrl}/walogo.png`} />
+      <meta name="twitter:image" content={fullImageUrl} />
 
       {/* Structured Data (Schema) */}
-      {schema && (
-        <script type="application/ld+json">
-          {JSON.stringify(schema)}
+      {schemasToRender.map((s, idx) => (
+        <script key={idx} type="application/ld+json">
+          {JSON.stringify(s)}
         </script>
-      )}
+      ))}
     </Helmet>
   );
 }

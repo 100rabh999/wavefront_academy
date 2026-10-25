@@ -18,16 +18,37 @@ export function MhtCetPage() {
       "@id": `${businessInfo.website}/#organization`,
       "name": businessInfo.name,
       "url": businessInfo.website
+    },
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "In-Person",
+      "location": {
+        "@type": "Place",
+        "name": businessInfo.name,
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": businessInfo.address.street,
+          "addressLocality": businessInfo.address.locality,
+          "addressRegion": businessInfo.address.state,
+          "postalCode": businessInfo.address.postalCode,
+          "addressCountry": businessInfo.address.country
+        }
+      }
     }
   };
 
   return (
     <div className="pt-24 md:pt-28 bg-warmwhite">
       <PageSEO 
-        title="MHT-CET Classes in Virar East | Engineering & Pharmacy Prep"
-        description="Learn from proven 99.30%ile toppers in MHT-CET. Wavefront Academy in Virar East offers specialized Maharashtra State Board curriculum coaching, speed drills, and mock tests."
+        title="MHT-CET Coaching in Virar | Wavefront Academy"
+        description="Learn from proven 99.30%ile toppers in MHT-CET. Wavefront Academy offers Maharashtra State Board curriculum coaching, speed drills, and mock tests in Virar East."
         canonicalPath="/programs/mht-cet"
         schema={courseSchema}
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Programs', path: '/programs' },
+          { name: 'MHT-CET', path: '/programs/mht-cet' }
+        ]}
       />
 
       {/* Breadcrumb & Hero */}

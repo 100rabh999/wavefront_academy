@@ -18,16 +18,37 @@ export function FoundationPage() {
       "@id": `${businessInfo.website}/#organization`,
       "name": businessInfo.name,
       "url": businessInfo.website
+    },
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "In-Person",
+      "location": {
+        "@type": "Place",
+        "name": businessInfo.name,
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": businessInfo.address.street,
+          "addressLocality": businessInfo.address.locality,
+          "addressRegion": businessInfo.address.state,
+          "postalCode": businessInfo.address.postalCode,
+          "addressCountry": businessInfo.address.country
+        }
+      }
     }
   };
 
   return (
     <div className="pt-24 md:pt-28 bg-warmwhite">
       <PageSEO 
-        title="Class 8th to 10th Coaching in Virar East | SSC, CBSE & ICSE"
+        title="Class 8th to 10th Coaching in Virar | Wavefront Academy"
         description="Strengthen school fundamentals in Mathematics and Science. Wavefront Academy provides personalized coaching for 8th, 9th, and 10th (SSC, CBSE, ICSE) in Virar East."
         canonicalPath="/programs/foundation"
         schema={courseSchema}
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Programs', path: '/programs' },
+          { name: 'School Foundation (8-10)', path: '/programs/foundation' }
+        ]}
       />
 
       {/* Breadcrumb & Hero */}

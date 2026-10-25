@@ -32,10 +32,14 @@ export function ContactPage() {
   return (
     <div className="pt-24 md:pt-28 bg-warmwhite">
       <PageSEO 
-        title="Contact Us & Center Location | Wavefront Academy Virar East"
+        title="Contact Wavefront Academy in Virar East"
         description="Visit Wavefront Academy in Virar East near Manvelpada Talav. Get directions, call +91 70581 07207, or chat on WhatsApp for admissions and batch timings."
         canonicalPath="/contact"
         schema={contactSchema}
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Contact Us', path: '/contact' }
+        ]}
       />
 
       {/* Header */}

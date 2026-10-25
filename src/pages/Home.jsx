@@ -10,8 +10,8 @@ export function Home() {
   return (
     <>
       <PageSEO 
-        title="Coaching Classes in Virar East | Wavefront Academy"
-        description="Wavefront Academy is Virar East's leading coaching institute near Manvelpada Talav. Expert preparation for JEE, NEET, MHT-CET, 11th-12th Science & Classes 8-10."
+        title="Science & Coaching Classes in Virar East | Wavefront Academy"
+        description="Premier coaching in Virar East near Manvelpada Talav for JEE, NEET, MHT-CET, 11th-12th Science & Classes 8-10. Small batches and expert mentorship."
         canonicalPath="/"
       />
       <Hero />

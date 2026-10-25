@@ -18,16 +18,37 @@ export function SciencePage() {
       "@id": `${businessInfo.website}/#organization`,
       "name": businessInfo.name,
       "url": businessInfo.website
+    },
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "In-Person",
+      "location": {
+        "@type": "Place",
+        "name": businessInfo.name,
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": businessInfo.address.street,
+          "addressLocality": businessInfo.address.locality,
+          "addressRegion": businessInfo.address.state,
+          "postalCode": businessInfo.address.postalCode,
+          "addressCountry": businessInfo.address.country
+        }
+      }
     }
   };
 
   return (
     <div className="pt-24 md:pt-28 bg-warmwhite">
       <PageSEO 
-        title="11th & 12th Science Classes in Virar East | HSC & CBSE Board"
+        title="Science Tuition Classes in Virar | Wavefront Academy"
         description="Master 11th and 12th Science (PCM/PCB) in Virar East. Comprehensive board preparation, concept clarity, practical guidance, and regular unit tests at Wavefront Academy."
         canonicalPath="/programs/science"
         schema={courseSchema}
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Programs', path: '/programs' },
+          { name: '11th & 12th Science', path: '/programs/science' }
+        ]}
       />
 
       {/* Breadcrumb & Hero */}

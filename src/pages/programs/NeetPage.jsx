@@ -18,16 +18,37 @@ export function NeetPage() {
       "@id": `${businessInfo.website}/#organization`,
       "name": businessInfo.name,
       "url": businessInfo.website
+    },
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "In-Person",
+      "location": {
+        "@type": "Place",
+        "name": businessInfo.name,
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": businessInfo.address.street,
+          "addressLocality": businessInfo.address.locality,
+          "addressRegion": businessInfo.address.state,
+          "postalCode": businessInfo.address.postalCode,
+          "addressCountry": businessInfo.address.country
+        }
+      }
     }
   };
 
   return (
     <div className="pt-24 md:pt-28 bg-warmwhite">
       <PageSEO 
-        title="NEET Coaching in Virar East | Medical Entrance Classes"
-        description="Comprehensive NEET preparation in Virar East at Wavefront Academy. Thorough NCERT Biology focus, Physics problem-solving, regular mock tests, and personalized mentoring."
+        title="NEET Coaching Classes in Virar | Wavefront Academy"
+        description="Comprehensive NEET preparation in Virar East at Wavefront Academy. Thorough NCERT Biology focus, Physics problem-solving drills, and OMR test series."
         canonicalPath="/programs/neet"
         schema={courseSchema}
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Programs', path: '/programs' },
+          { name: 'NEET Medical', path: '/programs/neet' }
+        ]}
       />
 
       {/* Breadcrumb & Hero */}

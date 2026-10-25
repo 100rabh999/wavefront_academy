@@ -6,13 +6,34 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
+      <image:loc>https://wavefrontacademy.web.app/hero-banner-1.jpg</image:loc>
+      <image:title>Wavefront Academy Virar - MHT-CET Toppers 2024–25 Results</image:title>
+      <image:caption>Top MHT-CET scorers and academic achievers from Wavefront Academy Virar East</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wavefrontacademy.web.app/hero-banner-2.jpg</image:loc>
+      <image:title>JEE Main and Advanced Achievers Wavefront Academy Virar</image:title>
+      <image:caption>JEE exam milestones and successful engineering aspirants coaching in Virar East</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wavefrontacademy.web.app/hero-banner-3.jpg</image:loc>
+      <image:title>Board and Competitive Exam Milestones Wavefront Academy</image:title>
+      <image:caption>State board and national competitive exam coaching batch at Wavefront Academy Virar</image:caption>
+    </image:image>
+    <image:image>
       <image:loc>https://wavefrontacademy.web.app/classroom.jpg</image:loc>
       <image:title>Wavefront Academy Classroom Virar East</image:title>
-      <image:caption>Classroom and learning environment at Wavefront Academy Virar East</image:caption>
+      <image:caption>Interactive classroom and focused learning environment at Wavefront Academy Virar East</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wavefrontacademy.web.app/image-1.png</image:loc>
+      <image:title>Students Learning in Classroom Wavefront Academy</image:title>
+      <image:caption>Small batch coaching and doubt resolution at Wavefront Academy Virar East</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://wavefrontacademy.web.app/walogo.png</image:loc>
       <image:title>Wavefront Academy Official Logo</image:title>
+      <image:caption>Official logo of Wavefront Academy Virar East</image:caption>
     </image:image>
   </url>
   <url>
@@ -25,22 +46,34 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
-      <image:loc>https://wavefrontacademy.web.app/4e5d5e82-b91d-48ff-89f7-a08127b84f87.png</image:loc>
+      <image:loc>https://wavefrontacademy.web.app/hero-banner-3.jpg</image:loc>
       <image:title>JEE Mains and Advanced Preparation at Wavefront Academy Virar</image:title>
+      <image:caption>Comprehensive IIT-JEE coaching, study material, and test series in Virar East</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://wavefrontacademy.web.app/programs/neet</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://wavefrontacademy.web.app/classroom.jpg</image:loc>
+      <image:title>NEET Medical Entrance Coaching at Wavefront Academy Virar</image:title>
+      <image:caption>Structured biology, chemistry, and physics coaching for NEET in Virar East</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://wavefrontacademy.web.app/programs/mht-cet</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
+      <image:loc>https://wavefrontacademy.web.app/class_student.jpg</image:loc>
+      <image:title>MHT-CET Classroom Coaching and Mentorship Virar</image:title>
+      <image:caption>Targeted test preparation for Maharashtra CET engineering and pharmacy admissions</image:caption>
+    </image:image>
+    <image:image>
       <image:loc>https://wavefrontacademy.web.app/chandan.jpeg</image:loc>
       <image:title>Chandan Chaubey - 99.308 Percentile MHT-CET Topper</image:title>
+      <image:caption>Chandan Chaubey 99.308 percentile MHT-CET topper from Wavefront Academy Virar</image:caption>
     </image:image>
   </url>
   <url>
@@ -50,24 +83,67 @@
     <image:image>
       <image:loc>https://wavefrontacademy.web.app/class.jpeg</image:loc>
       <image:title>11th and 12th Science Coaching Wavefront Academy Virar</image:title>
+      <image:caption>Expert faculty guidance for HSC Science PCM and PCB streams in Virar East</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://wavefrontacademy.web.app/programs/foundation</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wavefrontacademy.web.app/image-1.png</image:loc>
+      <image:title>School Foundation Batch Classes 8th to 10th Virar East</image:title>
+      <image:caption>Strong foundation coaching for SSC, CBSE, and ICSE students at Wavefront Academy</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://wavefrontacademy.web.app/results</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
+      <image:loc>https://wavefrontacademy.web.app/chandan.jpeg</image:loc>
+      <image:title>Chandan Chaubey - 99.308 Percentile MHT-CET Topper</image:title>
+      <image:caption>Chandan Chaubey scored 99.308 percentile in MHT-CET at Wavefront Academy</image:caption>
+    </image:image>
+    <image:image>
       <image:loc>https://wavefrontacademy.web.app/harsh.jpeg</image:loc>
       <image:title>Harsha Jha - 98.56 Percentile MHT-CET</image:title>
+      <image:caption>Harsha Jha scored 98.56 percentile in MHT-CET at Wavefront Academy</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://wavefrontacademy.web.app/newstudent.png</image:loc>
       <image:title>Akshay Karande - 98.33 Percentile JEE Mains</image:title>
+      <image:caption>Akshay Karande achieved 98.33 percentile in JEE Mains at Wavefront Academy</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wavefrontacademy.web.app/pratiksha.png</image:loc>
+      <image:title>Pratiksha Bare - 96.398 Percentile MHT-CET</image:title>
+      <image:caption>Pratiksha Bare achieved 96.398 percentile in MHT-CET</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wavefrontacademy.web.app/tejraj.jpeg</image:loc>
+      <image:title>Tejraj Mehtre - 96.03 Percentile MHT-CET</image:title>
+      <image:caption>Tejraj Mehtre achieved 96.03 percentile in MHT-CET</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wavefrontacademy.web.app/Jiya.png</image:loc>
+      <image:title>Jiya Jha - 94.328 Percentile MHT-CET</image:title>
+      <image:caption>Jiya Jha achieved 94.328 percentile in MHT-CET</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wavefrontacademy.web.app/aditya.jpg</image:loc>
+      <image:title>Aditya Jha - 90 Percent in 10th Board</image:title>
+      <image:caption>Aditya Jha scored 90 percent in 10th Board exam</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wavefrontacademy.web.app/om.jpg</image:loc>
+      <image:title>Om Jha - 90 Percent in 10th Board</image:title>
+      <image:caption>Om Jha scored 90 percent in 10th Board exam</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wavefrontacademy.web.app/krishna.jpg</image:loc>
+      <image:title>Krishna Gupta - 88 Percent in 10th Board</image:title>
+      <image:caption>Krishna Gupta scored 88 percent in 10th Board exam</image:caption>
     </image:image>
   </url>
   <url>
@@ -82,6 +158,12 @@
     <image:image>
       <image:loc>https://wavefrontacademy.web.app/image-1.png</image:loc>
       <image:title>Wavefront Academy Campus and Classroom Virar</image:title>
+      <image:caption>Wavefront Academy learning facilities in Virar East</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wavefrontacademy.web.app/classroom.jpg</image:loc>
+      <image:title>Modern Classroom Setup Wavefront Academy</image:title>
+      <image:caption>Well equipped classrooms and student benches at Wavefront Academy Virar</image:caption>
     </image:image>
   </url>
   <url>

@@ -54,10 +54,14 @@ export function FAQPage() {
   return (
     <div className="pt-24 md:pt-28">
       <PageSEO 
-        title="Frequently Asked Questions (FAQ) | Wavefront Academy Virar East"
+        title="Frequently Asked Questions (FAQ) | Wavefront Academy"
         description="Find answers to common questions about Wavefront Academy's coaching programs, batch sizes, test schedules, and admission processes in Virar East."
         canonicalPath="/faq"
         schema={faqSchema}
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'FAQ', path: '/faq' }
+        ]}
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4 text-center">
         <span className="inline-block py-1.5 px-4 rounded-full bg-accent-50 text-accent-700 font-bold text-xs md:text-sm mb-4 tracking-wide uppercase">

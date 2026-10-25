@@ -7,9 +7,13 @@ export function FeesPage() {
   return (
     <div className="pt-24 md:pt-28">
       <PageSEO 
-        title="Course Fees & Scholarship Structure"
-        description="View the transparent fee structure for Wavefront Academy's coaching programs in Virar, including JEE, NEET, Science, and school foundational courses."
+        title="Coaching Fees & Scholarships | Wavefront Academy"
+        description="Transparent fee structure and scholarship details for JEE, NEET, MHT-CET, 11th-12th Science, and school coaching programs at Wavefront Academy Virar."
         canonicalPath="/fees"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Fees', path: '/fees' }
+        ]}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4 text-center">
         <span className="inline-block py-1.5 px-4 rounded-full bg-accent-50 text-accent-700 font-bold text-xs md:text-sm mb-4 tracking-wide uppercase">

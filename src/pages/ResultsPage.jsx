@@ -7,9 +7,13 @@ export function ResultsPage() {
   return (
     <div className="pt-24 md:pt-28">
       <PageSEO 
-        title="Student Results & Achievements"
-        description="See why Wavefront Academy is the trusted choice in Virar. View our outstanding student achievements in JEE Mains, NEET, MHT-CET, and board exams."
+        title="JEE & MHT-CET Student Results | Wavefront Academy"
+        description="Explore top results and competitive exam achievements of Wavefront Academy students in MHT-CET, JEE Mains, NEET, and school board exams in Virar East."
         canonicalPath="/results"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Results', path: '/results' }
+        ]}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4 text-center">
         <span className="inline-block py-1.5 px-4 rounded-full bg-accent-50 text-accent-700 font-bold text-xs md:text-sm mb-4 tracking-wide uppercase">
